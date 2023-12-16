@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng ký</title>
+    <link rel="stylesheet/less" type="text/css" href="style.less" />
+    <script src="js/fx.js"></script>
+    <script src="js/less.min.js"></script>
+  </head>
+
+  <body>
+    <div id="wrapper" style="height: 100vh;">
+      <div id="transition"></div>
+
+      <div id="overlay"></div>
+
+      <main
+        style="
+          align-items: left;
+          justify-content: center;
+          gap: 0;
+          max-width: 320px;
+        ">
+        <img src="assets/icon.svg" class="icon" style="margin-bottom: 64px" />
+        <h1 style="margin-bottom: 64px">Đăng ký</h1>
+        <label>Email</label>
+        <input id="email" style="margin-bottom: 24px" placeholder="Email" />
+        <label>Tên đăng nhập</label>
+        <input
+          id="username"
+          style="margin-bottom: 24px"
+          placeholder="Tên người dùng" />
+        <label>Mật khẩu</label>
+        <input
+          id="password"
+          style="margin-bottom: 64px"
+          placeholder="Mật khẩu" />
+        <div class="lay-g-h">
+          <span onclick="transitionToPage('login.html')">Đăng nhập</span>
+          <button>Đăng ký</button>
+        </div>
+        <img
+          src="assets/icon.svg"
+          class="icon"
+          style="opacity: 0; margin-top: 64px" />
+      </main>
+    </div>
+  </body>
+</html>

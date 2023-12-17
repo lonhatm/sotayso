@@ -15,54 +15,64 @@
   
       <div id="overlay"></div>
       <style>
-        label {
-          margin: 0;
-        }
         main {
           max-width: 320px;
-          justify-content: center;
-          gap: 16vh !important;
+          justify-content: space-around;
+          padding: 20px;
+          gap: 16vh;
+          margin: 0;
+        }
+        .lay-g-v {
+          width: 100%;
+          min-width: 240px;
+          min-height: fit-content;
+          gap: 8px;
         }
         @media only screen and (min-width: 800px) {
           main {
-            max-width: 80vw;
+            max-width: 80%;
             height: 100vh;
             margin-top: 0px;
-            
-            padding: 0 20px;
             display: flex;
-            gap: 16vw !important; 
             flex-direction: row;
-            justify-content: flex-start;
-
+            justify-content: space-around;
+          }
+          .lay-g-v {
+            width: 32vw;
+            max-width: 320px;
+          }
         }
-      }
       </style>
-      <main style="align-items: left; justify-content: center; gap: 0;">
+      <main style="align-items: left; justify-content: center;">
         <div class="lay-g-v">
           <img src="assets/icon.svg" class="icon" style="margin-bottom: 32px" />
           <h1 style="margin-bottom: 0px">Đăng nhập</h1>
         </div>
         <div class="lay-g-v">
-          <label>Tên đăng nhập</label>
+
+          <label>Email</label>
           <input
-            id="username"
-            style="margin-bottom: 24px"
-            placeholder="Tên người dùng" />
+            type="email"
+            id="email"
+            placeholder="Email" 
+            required />
           <label>Mật khẩu</label>
-          <input type="password" id="password" style="margin-bottom: 64px" placeholder="Mật khẩu" />
-          <div class="lay-g-h">
-            <span onclick="transitionToPage('register.html')">Đăng ký</span>
-            <button type="submit">Đăng nhập</button>
+          <input
+            type="password"
+            id="password"
+            style="margin-bottom: 64px"
+            placeholder="Mật khẩu" 
+            required/>
+          <div class="lay-g-h-f">
+            <button type="button" class="flat" onclick="transitionToPage('register.html')">Đăng ký</button>
+            <button type="submit" id="dangnhap">Đăng nhập</button>
           </div>
+
         </div>
-        <!--
-          <img
-            src="assets/icon.svg"
-            class="icon"
-            style="opacity: 0; margin-top: 64px" />
-        -->
       </main>
     </div>
   </body>
+
+  <script type="module" src="js/auth.js"></script>
+
 </html>

@@ -25,7 +25,7 @@
 }
 
 .page-out {
-  animation: pageZoomOut .5s cubic-bezier(.5,0,.75,.25) forwards;
+  animation: pageZoomOut .25s cubic-bezier(.5,0,.75,.25) forwards;
 }
 
 @keyframes pageZoomIn {
@@ -52,8 +52,6 @@
   }
 }
 
-
-
 //html {
 //   color-scheme: dark light;
 //}
@@ -67,6 +65,8 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: 125%; /* 20px */
+
+  // mobile / desktop
 }
 
 img,
@@ -77,14 +77,19 @@ video {
   max-width: 100%;
 }
 
+@Primary: #0055ff;
 @PrimaryLight: #0055ff3d;
 @Surface: #0055FF1A;
 @Background: #fff;
+@Motion: .3s cubic-bezier(.25,.75,.5,1);
+@MotionAlt: .75s cubic-bezier(.125,1,.125,1);
+
+@MediaMoblie: 640px;
 
 #wrapper {
   width: 100%;
   height: 100vh;
-  @media only screen and (max-width: 640px) {
+  @media only screen and (max-width: @MediaMoblie) {
     height: calc(100vh - 80px);
   }
   display: flex;
@@ -96,13 +101,11 @@ video {
 main {
   //outline: red solid 1px;
   width: 100%;
-  height: 100vh;
-  margin-top: 0px;
-  @media only screen and (max-width: 640px) {
+  margin: 0 0 80px;
+  @media only screen and (max-width: @MediaMoblie) {
     width: 100vw;
-    height: calc(100vh - 80px);
   }
-  padding: 0 20px;
+  padding: 0 20px 20px;
   display: flex;
   gap: 48px;
   flex-direction: column;
@@ -111,35 +114,86 @@ main {
   animation: pageZoomIn .75s cubic-bezier(.125,1,.125,1) forwards;
 }
 
+body {
+  display: flex;
+  @media only screen and (max-width: @MediaMoblie) {
+    flex-direction: column;
+  }
+  flex-direction: row;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media only screen and (max-width: @MediaMoblie) {
+    padding-left: 0;
+  }
+  padding-left: 124px;
+}
+
 nav {
-  @media only screen and (max-width: 640px) {
+  position: fixed;
+  @media only screen and (max-width: @MediaMoblie) {
     width: 100vw;
     height: 80px;
-    padding: 0px 32px;
-    justify-content: space-between;
+    padding: 0 8vw;
     align-items: center;
     flex-direction: row;
-    position: sticky;
     bottom: 0;
+    button {
+      width: 100%;
+      height: 80px !important;
+    }
+    #icon, #ui-more {
+      display: none;
+    }
   }
+  padding: 46px 0;
+  width: 124px;
+  height: 100dvh;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   flex-direction: column;
   background: @Background;
   z-index: 1;
+  #ui-more {
+    border-radius: 24px;
+  }
   button {
-    height: 36px;
-    padding: 0px 20px;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    height: 48px;
     background: @Background;
+    border-radius: 0;
+    padding: 0;
     &:hover {
-      background: darken((@Background), 8%);
+      background: @Background;
+      span {
+        padding: 0px 20px;
+        background: darken((@Background), 8%);
+      }
     }
     &.is-open{
-      background: @PrimaryLight;
       &:hover {
-        background: darken((@PrimaryLight), 8%);
+        span {
+          background: darken((@PrimaryLight), 8%);
+        }
       }
+      span {
+        padding: 0px 20px;
+        background: @PrimaryLight;
+      }
+    }
+    span {
+      display: flex;
+      height: 36px;
+      padding: 0px 8px;
+      border-radius: 24px;
+      justify-content: center;
+      align-items: center;
+      background: @Background;
+      transition: @MotionAlt;
     }
   }
 }
@@ -169,26 +223,64 @@ button {
   font-weight: 700;
   font-size: 16px;
   background: @PrimaryLight;
+
   &:hover {
-    background: darken((@PrimaryLight), 8%);
+    background: darken((@PrimaryLight), 25);
+  }
+  &:active {
+    scale: 0.9;
   }
 
-  // nút hình tròn ⬇️
+  // nút hình tròn
   &.small {
     width: 42px;
     height: 42px;
     padding: 0px;
     background: @Background;
+    box-shadow: 0 0 0 8px @Background inset;
     &:hover {
       background: darken((@Background), 8%);
+      box-shadow: 0 0 0 0px @Background inset;
     }
   }
+
+  // nút phẳng
+  &.flat {
+    margin: 0 -16px;
+    background: @Background;
+    box-shadow: 0 0 0 8px @Background inset;
+    &:hover {
+      background: darken((@Background), 8%);
+      box-shadow: 0 0 0 0px @Background inset;
+    }
+  }
+
+  // nút to
+  &.big {
+    height: fit-content;
+    min-width: 120px;
+    max-width: 200px;
+    flex-grow: 1;
+    padding: 20px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    border-radius: 16px;
+    background: @Surface;
+    font-weight: 500;
+    &:hover {
+      background: @PrimaryLight;
+    }
+  }
+
+  transition: @MotionAlt;
 }
 
 input {
   display: flex;
   padding: 0 16px;
   height: 52px;
+  width: 100%;
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
@@ -196,6 +288,21 @@ input {
   border-radius: 16px;
   font-size: 16px;
   border: 2px solid @PrimaryLight;
+  margin-bottom: 24px;
+  &:focus {
+    outline: 0;
+    border: 2px solid @Primary;
+    background: @Surface;
+    border-radius: 10px;
+  }
+  &:hover {
+    border: 2px solid @Primary;
+  }
+  transition: @Motion;
+}
+
+form {
+  width: 100%;
 }
 
 h1 {
@@ -204,10 +311,17 @@ h1 {
   font-weight: 1000;
 }
 
+h2 {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}
+
 label {
   font-weight: 700;
   font-size: 16px;
-  margin: 0 0 8px;
+  margin: 0 0 0px;
 }
 
 a {
@@ -260,20 +374,37 @@ a {
 // nhưng mà dùng flexbox để t làm
 // nó giống cái auto layout trong figma
 
-.lay-g-h {
-  width: 100%;
+.lay-g-h { // layout group horizontal
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 8px
+  gap: 16px
 }
 
-.lay-g-v {
+.lay-g-v { // layout group vertical
   //height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 8px
+  gap: 24px
+}
+
+.lay-g-h-f { // layout group horizontal fill
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  //justify-content: space-between;
+  align-items: center;
+  gap: 16px
+}
+
+.lay-g-d { // layout group dynamic (tức là tuỳ vào đang chế độ mobile hay desktop để chỉnh layout)
+  display: flex;
+  @media only screen and (max-width: @MediaMoblie) {
+    width: 100%;
+    flex-direction: row;
+  }
+  flex-direction: column;
 }

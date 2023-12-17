@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="js/main.js"></script>
     <script src="js/fx.js"></script>
     <link rel="stylesheet/less" type="text/css" href="style.less" />
     <script src="js/less.min.js"></script>
@@ -16,49 +15,74 @@
 
     <div id="overlay"></div>
 
-    <header>
-      <h1>Tóm tắt</h1>
-      <div class="lay-g-h">
-        <button class="small"><img src="assets/icons/ques.svg"></button>
-        <button class="small"><img src="assets/icons/more.svg"></button>
-      </div>
-    </header>
-
-    <main>
-      
-      <div id="panel-wrapper">
-        <div class="panel" id="ui-panel-loi">
-          <div class="lay-g-h" style="padding: 8px">
-            <label style="margin: 0;">Lỗi</label>
-            <span id="data-lop-loi-tong">3</span>
-          </div>
-          <ul>
-            <li>Nhỏ này mặc không đúng trang phục</li>
-            <li>Nhỏ này đi dép lê</li>
-            <li>...</li>
-          </ul>
-        </div>
-        <div class="panel">
-          <div class="lay-g-h" style="padding: 8px">
-            <label style="margin: 0;">Lỗi</label>
-            <span id="data-lop-loi-tong">3</span>
-          </div>
-          <ul>
-            <li>Nhỏ này mặc không đúng trang phục</li>
-            <li>Nhỏ này đi dép lê</li>
-            <li>...</li>
-          </ul>
-        </div>
-      </div>
-
-
-    </main>
-
     <nav>
-      <button class="is-open"><img src="assets/icons/home.svg"></button>
-      <button><img src="assets/icons/notebook.svg"></button>
-      <button><img src="assets/icons/list.svg"></button>
-      <button><img src="assets/icons/ann.svg"></button>
+      <img id="icon" src="assets/icon.svg" width="24px">
+      <div class="lay-g-d">
+        <button class="is-open"><span><img src="assets/icons/home.svg"></span></button>
+        <button><span><img src="assets/icons/notebook.svg"></span></button>
+        <button><span><img src="assets/icons/list.svg"></span></button>
+        <button><span><img src="assets/icons/ann.svg"></span></button>
+      </div>
+      <button id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
     </nav>
+
+    <div class="main-content">
+      <header>
+        <h1>Tóm tắt</h1>
+        <div class="lay-g-h">
+          <button class="small"><img src="assets/icons/ques.svg"></button>
+          <button class="small"><img src="assets/icons/more.svg"></button>
+        </div>
+      </header>
+
+      <main>
+        <div id="panel-wrapper">
+          <div class="panel" id="ui-panel-loi">
+            <div class="lay-g-h" style="padding: 8px">
+              <label style="margin: 0;">Lỗi</label>
+              <span id="data-lop-loi-tong">3</span>
+            </div>
+            <ul>
+              <li>Nhỏ này mặc không đúng trang phục</li>
+              <li>Nhỏ này đi dép lê</li>
+              <li>...</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <div class="lay-g-h" style="padding: 8px">
+              <label style="margin: 0;">Lỗi</label>
+              <span id="data-lop-loi-tong">3</span>
+            </div>
+            <ul>
+              <li>Nhỏ này mặc không đúng trang phục</li>
+              <li>Nhỏ này đi dép lê</li>
+              <li>...</li>
+            </ul>
+          </div>
+        </div>
+  
+        <div class="lay-g-v">
+          <h2>Quản lý</h2>
+
+          <div class="lay-g-h-f">
+            <button class="big">
+              <img src="assets/icons/ques.svg">
+              Lỗi vi phạm
+            </button>
+            <button class="big">
+              <img src="assets/icons/ques.svg">
+              Lỗi vi phạm
+            </button>
+          </div>
+        </div>
+        <button id="dangxuat">Đăng xuất</button>
+
+  
+      </main>
+    </div>
+
   </body>
+
+  <script type="module" src="js/main.js"></script>
+
 </html>

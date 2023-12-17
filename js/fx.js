@@ -1,5 +1,5 @@
 window.transitionToPage = function(href) {
-    document.querySelector('main').classList.add("page-hold");
+    document.querySelector('main').classList.add("page-out");
     setTimeout(function() { 
         window.location.href = href
     }, 500)

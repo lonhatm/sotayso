@@ -24,11 +24,11 @@
   user-select: none;
 }
 
-.page-hold {
-  animation: hold .5s cubic-bezier(.5,0,.75,.25) forwards;
+.page-out {
+  animation: pageZoomOut .5s cubic-bezier(.5,0,.75,.25) forwards;
 }
 
-@keyframes zoomIn {
+@keyframes pageZoomIn {
   0% {
     scale: 0.9;
     opacity: 0;
@@ -40,7 +40,7 @@
   }
 }
 
-@keyframes hold {
+@keyframes pageZoomOut {
   0% {
     scale: 1;
     opacity: 1;
@@ -108,7 +108,7 @@ main {
   flex-direction: column;
   justify-content: flex-start;
 
-  animation: zoomIn 1s cubic-bezier(.125,1,.125,1) forwards;
+  animation: pageZoomIn .75s cubic-bezier(.125,1,.125,1) forwards;
 }
 
 nav {
@@ -261,9 +261,19 @@ a {
 // nó giống cái auto layout trong figma
 
 .lay-g-h {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 8px
+}
+
+.lay-g-v {
+  //height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   gap: 8px
 }

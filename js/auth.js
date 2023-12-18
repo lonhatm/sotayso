@@ -20,6 +20,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+// cái vòng vòng loading
+
+const loader = document.createElement("div");
+loader.id = "loader";
+
 
 // ĐĂNG NHẬP
 
@@ -34,7 +39,8 @@ if (dangNhapButton != null) {
     let email = document.querySelector('#email').value;
     let password = document.querySelector('#password').value;
 
-    dangNhapButton.style.opacity = ".25";
+    dangNhapButton.style.background = "@Disable";
+    dangNhapButton.appendChild(loader)
 
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -48,21 +54,18 @@ if (dangNhapButton != null) {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode + " " + errorMessage);
-      dangNhapButton.style.opacity = "1";
+      dangNhapButton.style.background = "@PrimaryLight";
+      dangNhapButton.removeChild(loader)
       alert(errorCode)
     });
   }
 }
 
-
-
-
-
 // ĐĂNG KÝ
 
 const dangKyButton = document.getElementById("dangky");
 
-if (dangNhapButton != null) {
+if (dangKyButton != null) {
   document.querySelector('#dangky').addEventListener('click', dangKy);
 
   function dangKy(e) {
@@ -70,10 +73,13 @@ if (dangNhapButton != null) {
 
     let email = document.querySelector('#email').value;
     let password = document.querySelector('#password').value;
+    let password2 = document.querySelector('#password2').value;
 
-    dangKyButton.style.opacity = ".25";
+    dangKyButton.style.background = "@Disable";
+    dangKyButton.appendChild(loader)
 
-    createUserWithEmailAndPassword(auth, email, password)
+    if (password == password2) {
+      createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up 
         const user = userCredential.user;
@@ -84,9 +90,16 @@ if (dangNhapButton != null) {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode + " " + errorMessage);
-        dangNhapButton.style.opacity = "1";
+        dangKyButton.style.background = "@PrimaryLight";
+        dangKyButton.removeChild(loader)
         alert(errorCode)
       });
+    } else {
+      alert("Mật khẩu không khớp")
+      dangKyButton.style.background = "@PrimaryLight";
+      dangKyButton.removeChild(loader)
+    }
+    
   }
 }
 // KIỂM TRA TRANG THÁI NGƯỜI DÙNG ĐỂ CHUYỂN TRANG

@@ -25,7 +25,12 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
-// KIỂM TRA TRANG THÁI NGƯỜI DÙNG ĐỂ CHUYỂN TRANG
+// cái vòng vòng loading
+
+const loader = document.createElement("div");
+loader.id = "loader";
+
+// KIỂM TRA TRANG THÁI NGƯỜI DÙNG ĐỂ CHUYỂN TRANG + LẤY DỮ LIỆU NẾU ĐÃ ĐĂNG NHẬP
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -38,15 +43,20 @@ onAuthStateChanged(auth, (user) => {
 // ĐĂNG XUẤT
 
 const dangXuatButton = document.getElementById("dangxuat");
+console.log(dangXuatButton)
 
-document.querySelector('#dangxuat').addEventListener('click', signOutUser);
+dangXuatButton.addEventListener('click', signOutUser);
 
 function signOutUser() {
+  //dangXuatButton.disabled = true;
+  //dangXuatButton.appendChild(loader)
   signOut(auth).then(() => {
     console.log("logout")
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
     alert(errorCode + " " + errorMessage);
+    //dangXuatButton.disabled = false;
+    //dangXuatButton.removeChild(loader)
   });
 }

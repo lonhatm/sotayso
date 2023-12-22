@@ -39,7 +39,7 @@ if (dangNhapButton != null) {
     let email = document.querySelector('#email').value;
     let password = document.querySelector('#password').value;
 
-    dangNhapButton.style.background = "@Disable";
+    dangNhapButton.disabled = true;
     dangNhapButton.appendChild(loader)
 
     signInWithEmailAndPassword(auth, email, password)
@@ -54,7 +54,7 @@ if (dangNhapButton != null) {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode + " " + errorMessage);
-      dangNhapButton.style.background = "@PrimaryLight";
+      dangNhapButton.disabled = false;
       dangNhapButton.removeChild(loader)
       alert(errorCode)
     });
@@ -75,7 +75,7 @@ if (dangKyButton != null) {
     let password = document.querySelector('#password').value;
     let password2 = document.querySelector('#password2').value;
 
-    dangKyButton.style.background = "@Disable";
+    dangKyButton.disabled = true;
     dangKyButton.appendChild(loader)
 
     if (password == password2) {
@@ -90,13 +90,13 @@ if (dangKyButton != null) {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode + " " + errorMessage);
-        dangKyButton.style.background = "@PrimaryLight";
+        dangKyButton.disabled = false;
         dangKyButton.removeChild(loader)
         alert(errorCode)
       });
     } else {
       alert("Mật khẩu không khớp")
-      dangKyButton.style.background = "@PrimaryLight";
+      dangKyButton.disabled = false;
       dangKyButton.removeChild(loader)
     }
     

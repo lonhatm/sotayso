@@ -25,29 +25,30 @@
 }
 
 .page-out {
-  animation: pageZoomOut .25s cubic-bezier(.5,0,.75,.25) forwards;
+  animation: pageZoomOut 0.25s cubic-bezier(0.5, 0, 0.75, 0.25) forwards;
 }
 
 @keyframes pageZoomIn {
   0% {
-    scale: 0.9;
+    //transform-origin: top;
+    transform: scaleX(0.9);
     opacity: 0;
   }
 
   100% {
-    scale: 1;
+    transform: scale(1);
     opacity: 1;
   }
 }
 
 @keyframes pageZoomOut {
   0% {
-    scale: 1;
+    transform: scale(1);
     opacity: 1;
   }
 
   100% {
-    scale: 0.9;
+    transform: scale(0.9);
     opacity: 0;
   }
 }
@@ -64,9 +65,8 @@ body {
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 125%; /* 20px */
-
-  // mobile / desktop
+  line-height: 20px;
+  //overflow: hidden;
 }
 
 img,
@@ -79,11 +79,14 @@ video {
 
 @Primary: #0055ff;
 @PrimaryLight: #0055ff3d;
-@Surface: #0055FF1A;
+@Surface: #0055ff1a;
 @Background: #fff;
+@Outline: #00000014;
 @Disable: #a0a0a0;
-@Motion: .3s cubic-bezier(.25,.75,.5,1);
-@MotionAlt: .75s cubic-bezier(.125,1,.125,1);
+@Motion: 0.3s cubic-bezier(0.25, 0.75, 0.5, 1);
+@MotionAlt: 0.75s cubic-bezier(0.125, 1, 0.125, 1);
+@MotionOut: 0.25s cubic-bezier(0.25, 0, 0, 1);
+@Shadow: 0px 8px 24px -8px rgba(0, 0, 0, 0.25);
 
 @MediaMoblie: 640px;
 
@@ -99,22 +102,6 @@ video {
   justify-content: center;
 }
 
-main {
-  //outline: red solid 1px;
-  width: 100%;
-  margin: 0 0 80px;
-  @media only screen and (max-width: @MediaMoblie) {
-    width: 100vw;
-  }
-  padding: 0 20px 20px;
-  display: flex;
-  gap: 48px;
-  flex-direction: column;
-  justify-content: flex-start;
-
-  animation: pageZoomIn .75s cubic-bezier(.125,1,.125,1) forwards;
-}
-
 body {
   display: flex;
   @media only screen and (max-width: @MediaMoblie) {
@@ -127,16 +114,40 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  
+  //@media only screen and (max-width: @MediaMoblie) {
+  //  padding: 0;
+  //}
+  //padding: 0;
+}
+
+main {
+  //outline: red solid 1px;
+  width: 100%;
+  height: 100%;
+  margin: 0 0;
   @media only screen and (max-width: @MediaMoblie) {
-    padding-left: 0;
+    width: 100vw;
   }
-  padding-left: 124px;
+  padding: 0 20px 20px;
+  display: flex;
+  gap: 48px;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: scroll;
+
+  animation: pageZoomIn @MotionAlt forwards;
 }
 
 nav {
-  position: fixed;
+  //position: fixed;
   @media only screen and (max-width: @MediaMoblie) {
+    position: fixed;
     width: 100vw;
+    min-width: none;
+    max-width: none;
     height: 80px;
     padding: 0 6vw;
     align-items: center;
@@ -146,12 +157,15 @@ nav {
       width: 100%;
       height: 80px !important;
     }
-    #icon, #ui-more {
+    #icon,
+    #ui-more {
       display: none;
     }
   }
-  padding: 46px 0;
-  width: 124px;
+  padding: 26px 0;
+  width: 14vw;
+  min-width: 90px;
+  max-width: 124px;
   height: 100dvh;
   display: flex;
   align-items: center;
@@ -175,7 +189,7 @@ nav {
         background: darken((@Background), 8%);
       }
     }
-    &.is-open{
+    &.is-open {
       &:hover {
         span {
           background: darken((@PrimaryLight), 8%);
@@ -202,12 +216,8 @@ nav {
 header {
   display: flex;
   width: 100%;
-  padding: 32px 20px 12px;
-  height: 100px;
-  @media only screen and (max-width: @MediaMoblie) {
-    padding: 0 20px;
-    height: 80px;
-  }
+  padding: 0 20px;
+  height: 82px !important;
   justify-content: space-between;
   align-items: center;
   position: sticky;
@@ -220,6 +230,7 @@ button {
   border: 0;
   display: flex;
   height: 42px;
+  min-height: 42px;
   padding: 0px 16px;
   align-items: center;
   justify-content: center;
@@ -228,12 +239,17 @@ button {
   font-weight: 700;
   font-size: 16px;
   background: @PrimaryLight;
+  cursor: pointer;
 
   &:hover {
     background: darken((@PrimaryLight), 25);
   }
   &:active {
-    scale: 0.9;
+    transform: scale(0.975);
+  }
+  &:disabled {
+    background: @Disable;
+    cursor: not-allowed;
   }
 
   // nút hình tròn
@@ -263,12 +279,13 @@ button {
   // nút to
   &.big {
     height: fit-content;
-    min-width: 120px;
-    max-width: 200px;
+    //min-width: 120px;
+    //max-width: 200px;
     flex-grow: 1;
     padding: 20px 16px;
     flex-direction: column;
     align-items: flex-start;
+    text-align: left;
     gap: 16px;
     border-radius: 16px;
     background: @Surface;
@@ -276,6 +293,16 @@ button {
     &:hover {
       background: @PrimaryLight;
     }
+    transition: @Motion;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+    user-select: none;
+    user-zoom: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
   }
 
   transition: @MotionAlt;
@@ -285,6 +312,7 @@ input {
   display: flex;
   padding: 0 16px;
   height: 52px;
+  min-height: 52px;
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
@@ -379,42 +407,63 @@ a {
 // nhưng mà dùng flexbox để t làm
 // nó giống cái auto layout trong figma
 
-.lay-g-h { // layout group horizontal
+.lay-g-h {
+  // layout group horizontal
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 16px
+  gap: 16px;
 }
 
-.lay-g-v { // layout group vertical
+.lay-g-v {
+  // layout group vertical
   //height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 24px
+  gap: 24px;
 }
 
-.lay-g-h-f { // layout group horizontal fill
+.lay-g-h-f {
+  // layout group horizontal fill
   width: 100%;
   display: flex;
   flex-direction: row;
   //justify-content: space-between;
   align-items: center;
-  gap: 16px
+  gap: 16px;
 }
 
-.lay-g-h-f-alt { // layout group horizontal fill alternative
+.lay-g-h-f-alt {
+  // layout group horizontal fill alternative
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 16px
+  gap: 16px;
 }
 
-.lay-g-d { // layout group dynamic (tức là tuỳ vào đang chế độ mobile hay desktop để chỉnh layout)
+.lay-grid-f-h {
+  // layout grid fill horizontal
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.lay-grid-h {
+  // layout grid horizontal
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.lay-g-d {
+  // layout group dynamic (tức là tuỳ vào đang chế độ mobile hay desktop để chỉnh layout)
   display: flex;
   @media only screen and (max-width: @MediaMoblie) {
     width: 100%;
@@ -423,7 +472,23 @@ a {
   flex-direction: column;
 }
 
-// linh tinh
+// LINH TINH
+
+// chuyển động
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// loader
 
 #loader {
   border: 2px solid transparent;
@@ -432,17 +497,100 @@ a {
   width: 16px;
   height: 16px;
   margin: 4px;
-  -webkit-animation: ui-loader 1s linear infinite; /* Safari */
-  animation: ui-loader 1s linear infinite;
+  -webkit-animation: ui-loader 0.75s linear infinite; /* Safari */
+  animation: ui-loader 0.75s linear infinite;
 }
 
 /* Safari */
 @-webkit-keyframes ui-loader {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes ui-loader {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// dropdown
+
+.dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+}
+
+.dropdown-content {
+  position: absolute;
+  background: @Background;
+  min-width: 164px;
+  width: fit-content;
+  padding: 10px;
+  //display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  border: 2px solid @Outline;
+  box-shadow: @Shadow;
+  overflow: auto;
+  z-index: 2;
+  button {
+    padding: 10px;
+    height: fit-content;
+    width: 100%;
+    background: @Background;
+    text-align: left;
+    justify-content: flex-start;
+    gap: 16px;
+    border-radius: 6px;
+    line-height: normal;
+    &:hover {
+      background: darken(@Background, 8%);
+    }
+  }
+  &.up {
+    bottom: 42px;
+    &.right {
+      left: 42px;
+      bottom: 0;
+      transform-origin: left bottom;
+    }
+    &.left {
+      right: 42px;
+      transform-origin: right bottom;
+    }
+  }
+  &.right {
+    left: 42px;
+    transform-origin: left;
+  }
+  &.left {
+    right: 0;
+    transform-origin: top right;
+  }
+
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: @MotionOut;
+}
+
+.show-dropdown {
+  //animation: zoomIn @MotionAlt 0s forwards;
+  //display: flex;
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+  transition: @MotionAlt;
+}
+
+.show-block {
+  display: block;
 }

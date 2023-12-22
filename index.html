@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Tóm tắt</title>
     <script src="js/fx.js"></script>
+    <script src="js/func.js"></script>
     <link rel="stylesheet/less" type="text/css" href="style.less" />
     <script src="js/less.min.js"></script>
     <script src="js/jquery-3.7.1.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="assets/icon.svg">
   </head>
 
   <body>
@@ -23,7 +25,19 @@
         <button><span><img src="assets/icons/list.svg"></span></button>
         <button><span><img src="assets/icons/ann.svg"></span></button>
       </div>
-      <button id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
+      <div class="dropdown-wrapper">
+        <button onclick="dropdown('ui-more-dropdown')" id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
+        <div class="dropdown-content right up" id="ui-more-dropdown">
+          <button>
+            <img src="assets/icons/setting.svg">
+            Cài đặt
+          </button>
+          <button>
+            <img src="assets/icons/user.svg">
+            Tài khoản
+          </button>
+        </div>
+      </div>
     </nav>
 
     <div class="main-content">
@@ -31,7 +45,19 @@
         <h1>Tóm tắt</h1>
         <div class="lay-g-h">
           <button class="small"><img src="assets/icons/ques.svg"></button>
-          <button class="small"><img src="assets/icons/more.svg"></button>
+          <div class="dropdown-wrapper">
+            <button onclick="dropdown('ui-more-dropdown-moblie')" id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
+            <div class="dropdown-content left" id="ui-more-dropdown-moblie">
+              <button>
+                <img src="assets/icons/setting.svg">
+                Cài đặt
+              </button>
+              <button>
+                <img src="assets/icons/user.svg">
+                Tài khoản yuh yuh be oi
+              </button>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -64,25 +90,33 @@
         <div class="lay-g-v">
           <h2>Quản lý</h2>
 
-          <div class="lay-g-h-f">
+          <div class="lay-grid-h">
             <button class="big">
               <img src="assets/icons/ques.svg">
               Lỗi vi phạm
             </button>
             <button class="big">
               <img src="assets/icons/ques.svg">
-              Lỗi vi phạm
+              Sổ đầu bài
             </button>
           </div>
         </div>
-        <button id="dangxuat">Đăng xuất</button>
 
+          <button id="dangxuat">Đăng xuất</button>
+
+
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
   
       </main>
     </div>
 
   </body>
 
-  <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
+
 
 </html>

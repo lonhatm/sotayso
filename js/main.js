@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
-//import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import { getAuth, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js"; //analytics
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"; //auth
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -24,13 +24,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 // cái vòng vòng loading
 
 const loader = document.createElement("div");
 loader.id = "loader";
 
-// KIỂM TRA TRANG THÁI NGƯỜI DÙNG ĐỂ CHUYỂN TRANG + LẤY DỮ LIỆU NẾU ĐÃ ĐĂNG NHẬP
+// ngày tháng
+
+const DATE = new Date();
+
+// KIỂM TRA TRANG THÁI NGƯỜI DÙNG ĐỂ CHUYỂN TRANG
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -39,6 +44,32 @@ onAuthStateChanged(auth, (user) => {
     window.location.replace("login.html");
   }
 });
+
+// ĐĂNG VÀ LẤY DỮ LIỆU TỪ FIRESTORE
+
+const vutDuLieuButton = document.getElementById("vutDuLieu");
+
+if (vutDuLieuButton != null) {
+  document.querySelector('#vutDuLieu').addEventListener('click', uploadData);
+}
+
+async function uploadData() {
+  try {
+    const docRef = await addDoc(collection(db, "test"), {
+      data: document.getElementById("inputODay").value,
+      time: DATE,
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
+
+const querySnapshot = await getDocs(collection(db, "test"));
+querySnapshot.forEach((doc) => {
+  console.log(`${doc.id} => ${doc.data()}`);
+});
+
 
 // ĐĂNG XUẤT
 

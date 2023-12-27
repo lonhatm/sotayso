@@ -1,9 +1,36 @@
-@font-face {
-  font-family: Recursive;
-  src: url(assets/font/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf);
-}
+//@font-face {
+//  font-family: Recursive;
+//  src: url(assets/font/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf);
+//}
 
 // assets/font/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf
+
+@Primary: #0055ff;
+@PrimaryLight: #0055ff3d;
+@Surface: #0055ff1a;
+@Background: #fff;
+@Outline: #00000014;
+@Disable: #a0a0a0;
+@Motion: 0.3s cubic-bezier(0.25, 0.75, 0.5, 1);
+@MotionAlt: 0.75s cubic-bezier(0.125, 1, 0.125, 1);
+@MotionOut: 0.25s cubic-bezier(0.25, 0, 0, 1);
+@Shadow: 0px 8px 24px -8px rgba(0, 0, 0, 0.25);
+
+html {font-size: 15px;}
+
+//@TextXL: 31px;
+//@TextL: 17px;
+//@Text: 15px;
+//@TextS: 13px;
+
+@TextXL: 2rem;
+@TextL: 1.5rem;
+@Text: 1rem;
+@TextS: 0.8rem;
+
+@Font: sans-serif;
+
+@MediaMoblie: 640px;
 
 *,
 *::before,
@@ -19,38 +46,10 @@
   line-height: normal;
   font-variant-numeric: lining-nums proportional-nums;
   font-feature-settings: "ss02" on, "ss08" on, "ss11" on, "ss09" on;
-  font-family: Recursive, sans-serif;
+  font-family: @Font;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
-}
-
-.page-out {
-  animation: pageZoomOut 0.25s cubic-bezier(0.5, 0, 0.75, 0.25) forwards;
-}
-
-@keyframes pageZoomIn {
-  0% {
-    //transform-origin: top;
-    transform: scaleX(0.9);
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes pageZoomOut {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scale(0.9);
-    opacity: 0;
-  }
+  text-rendering: optimizeSpeed;
 }
 
 //html {
@@ -60,13 +59,10 @@
 body {
   min-height: 100vh;
   max-width: 100vw;
-  // align-items: center;
-  // justify-content: center;
-  font-size: 16px;
+  font-size: @Text;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
-  //overflow: hidden;
 }
 
 img,
@@ -76,19 +72,6 @@ video {
   display: block;
   max-width: 100%;
 }
-
-@Primary: #0055ff;
-@PrimaryLight: #0055ff3d;
-@Surface: #0055ff1a;
-@Background: #fff;
-@Outline: #00000014;
-@Disable: #a0a0a0;
-@Motion: 0.3s cubic-bezier(0.25, 0.75, 0.5, 1);
-@MotionAlt: 0.75s cubic-bezier(0.125, 1, 0.125, 1);
-@MotionOut: 0.25s cubic-bezier(0.25, 0, 0, 1);
-@Shadow: 0px 8px 24px -8px rgba(0, 0, 0, 0.25);
-
-@MediaMoblie: 640px;
 
 #wrapper {
   width: 100%;
@@ -172,7 +155,7 @@ nav {
   justify-content: space-between;
   flex-direction: column;
   background: @Background;
-  z-index: 1;
+  z-index: 2;
   #ui-more {
     border-radius: 24px;
   }
@@ -217,7 +200,7 @@ header {
   display: flex;
   width: 100%;
   padding: 0 20px;
-  height: 82px !important;
+  min-height: 82px;
   justify-content: space-between;
   align-items: center;
   position: sticky;
@@ -237,7 +220,7 @@ button {
   gap: 4px;
   border-radius: 24px;
   font-weight: 700;
-  font-size: 16px;
+  font-size: @Text;
   background: @PrimaryLight;
   cursor: pointer;
 
@@ -319,17 +302,16 @@ input {
   gap: 20px;
   align-self: stretch;
   border-radius: 16px;
-  font-size: 16px;
-  border: 2px solid @PrimaryLight;
-  margin-bottom: 24px;
+  font-size: @Text;
+  box-shadow: 0 0 0 2px @PrimaryLight inset;
+  border: 0;
+  margin: 0 -4px 24px;
+  &:hover {
+    box-shadow: 0 0 0 3px @PrimaryLight inset;
+  }
   &:focus {
     outline: 0;
-    border: 2px solid @Primary;
-    background: @Surface;
-    border-radius: 10px;
-  }
-  &:hover {
-    border: 2px solid @Primary;
+    box-shadow: 0 0 0 3px @Primary inset;
   }
   transition: @Motion;
 }
@@ -339,13 +321,15 @@ form {
 }
 
 h1 {
-  font-size: 32px;
+  font-size: @TextXL;
+  margin-block-start: 0;
+  margin-block-end: 0;
   font-style: normal;
   font-weight: 1000;
 }
 
 h2 {
-  font-size: 24px;
+  font-size: @TextL;
   font-style: normal;
   font-weight: 700;
   line-height: 20px;
@@ -353,13 +337,13 @@ h2 {
 
 label {
   font-weight: 700;
-  font-size: 16px;
-  margin: 0 0 0px;
+  font-size: @Text;
+  margin: 0 0 0px 0px;
 }
 
 a {
   font-weight: 700;
-  font-size: 16px;
+  font-size: @Text;
 }
 
 .icon {
@@ -485,6 +469,37 @@ a {
   100% {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+// style đóng mở trang
+
+.page-out {
+  animation: pageZoomOut 0.25s cubic-bezier(0.5, 0, 0.75, 0.25) forwards;
+}
+
+@keyframes pageZoomIn {
+  0% {
+    //transform-origin: top;
+    transform: scaleX(0.9);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pageZoomOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 0;
   }
 }
 

@@ -20,8 +20,8 @@
           height: 100dvh;
           max-width: 320px;
           padding: 20px;
-
           margin: 0;
+          gap: 32px;
         }
         .lay-g-v {
           width: 100%;
@@ -29,19 +29,21 @@
           gap: 8px;
         }
         #title {
-          height: 100%;
-          min-height: 120px;
           gap: 32px;
+          min-height: 102px;
+          margin: auto 0 auto;
+        }
+        #content {
+          justify-content: space-between;
+          min-height: 382px;
+          max-height: 400px;
+          height: 50%;
+          margin: auto 0;
         }
         @media only screen and (min-width: 800px) {
           main {
             max-width: 80%;
             display: flex;
-            /*
-            margin-top: 0px;
-            min-height: 600px;
-            height: 100vh;
-            */
             gap: 48px;
             flex-direction: row;
             justify-content: space-around;
@@ -50,40 +52,41 @@
             width: 32vw;
             max-width: 320px;
           }
+          #title {
+            margin: auto 0;
+          }
         }
-      </style>
       </style>
       <main>
         <div class="lay-g-v" id="title">
           <img src="assets/icon.svg" class="icon" />
           <h1 style="margin-bottom: 0px">Đăng ký</h1>
         </div>
-        <div class="lay-g-v">
-
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Email" 
-            required 
-            autocomplete="email"/>
-          <label for="password">Mật khẩu</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Mật khẩu" 
-            required 
-            autocomplete="off"/>
-          <label for="password2">Nhập lại mật khẩu</label>
-          <input
-            type="password"
-            id="password2"
-            style="margin-bottom: 64px"
-            placeholder="Mật khẩu" 
-            required 
-            autocomplete="off"/>
-          <p id="alertPopup"></p>
-
+        <div class="lay-g-v" id="content">
+          <div class="lay-g-v">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Email" 
+              required 
+              autocomplete="email"/>
+            <label for="password">Mật khẩu</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Mật khẩu" 
+              required 
+              autocomplete="off"/>
+            <label for="password2">Nhập lại mật khẩu</label>
+            <input
+              type="password"
+              id="password2"
+              placeholder="Mật khẩu" 
+              required 
+              autocomplete="off"/>
+            <p id="alertPopup"></p>
+          </div>
           <div class="lay-g-h-f-alt">
             <button type="button" class="flat" onclick="transitionToPage('login.html')">Đăng nhập</button>
             <button type="submit" id="dangky">Đăng ký</button>

@@ -20,10 +20,10 @@
     <nav>
       <img id="icon" src="assets/icon.svg" width="24px">
       <div class="lay-g-d">
-        <button class="is-open"><span><img src="assets/icons/home.svg"></span></button>
-        <button><span><img src="assets/icons/notebook.svg"></span></button>
-        <button><span><img src="assets/icons/list.svg"></span></button>
-        <button><span><img src="assets/icons/ann.svg"></span></button>
+        <button class="is-open"><span><img src="assets/icons/home.svg"><label>Tóm tắt</label></span></button>
+        <button><span><img src="assets/icons/notebook.svg"><label>Ghi chép</label></span></button>
+        <button><span><img src="assets/icons/list.svg"><label>Xếp hạng</label></span></button>
+        <button><span><img src="assets/icons/ann.svg"><label>Thông báo</label></span></button>
       </div>
       <div class="dropdown-wrapper">
         <button onclick="dropdown('ui-more-dropdown')" id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
@@ -60,8 +60,12 @@
           </div>
         </div>
       </header>
+      <!--
+        <span id="loader" class="loader"></span>
+      -->
 
       <main>
+
         <div id="panel-wrapper">
           <div class="panel" id="ui-panel-loi">
             <div class="lay-g-h" style="padding: 8px">
@@ -126,8 +130,10 @@
     </div>
 
   </body>
-
+  <!--
     <script type="module" src="js/main.js"></script>
+
+  -->
 
 
 </html>

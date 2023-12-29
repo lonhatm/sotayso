@@ -44,8 +44,8 @@ html {font-size: 15px;}
   font: inherit;
   box-sizing: border-box;
   line-height: normal;
-  font-variant-numeric: lining-nums proportional-nums;
-  font-feature-settings: "ss02" on, "ss08" on, "ss11" on, "ss09" on;
+  //font-variant-numeric: lining-nums proportional-nums;
+  //font-feature-settings: "ss02" on, "ss08" on, "ss11" on, "ss09" on;
   font-family: @Font;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
@@ -120,6 +120,7 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   overflow-y: scroll;
+  z-index: 1;
 
   animation: pageZoomIn @MotionAlt forwards;
 }
@@ -145,19 +146,55 @@ nav {
       display: none;
     }
   }
-  padding: 26px 0;
-  width: 14vw;
-  min-width: 90px;
-  max-width: 124px;
+  @media only screen and (min-width: @MediaMoblie) {
+    &:hover {
+      align-items: flex-start;
+      background: @Background;
+      label {
+        //display: block;
+        //animation: move @MotionAlt 0s forwards;
+        width: 100px;
+        visibility: visible;
+        opacity: 1;
+        margin-left: 16px;
+      }
+      span {
+        width: 174px;
+        justify-content: left;
+        padding: 0px 20px;
+        transition: padding 0s, background @MotionAlt;
+      }
+      .lay-g-d {
+        width: 174px;
+      }
+    }
+    .lay-g-d {
+      width: 60px;
+      transition: @MotionAlt;
+      transition-delay: .25s;
+    }
+    span {
+      transition-delay: .25s;
+    }
+  }
+  
+  padding: 26px 32px;
+  //min-width: 90px;
+  //max-width: 132px;
   height: 100dvh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
   background: @Background;
   z-index: 2;
   #ui-more {
     border-radius: 24px;
+    margin: 0 9px;
+  }
+  #icon {
+    margin: 0 18px;
+    min-width: 24px;
   }
   button {
     width: 100%;
@@ -184,6 +221,22 @@ nav {
       }
     }
     span {
+      label {
+        //display: none;
+        margin: 3px 0 0;
+        visibility: hidden;
+        width: 0px;
+        opacity: 0;
+        text-wrap: nowrap;
+        overflow: hidden;
+        text-align: left;
+        margin-left: 0px;
+        transition: @MotionAlt;
+        transition-delay: .25s;
+      }
+      img {
+        min-width: 20px;
+      }
       display: flex;
       height: 36px;
       padding: 0px 8px;
@@ -206,7 +259,7 @@ header {
   position: sticky;
   top: 0;
   background: @Background;
-  z-index: 1;
+  z-index: 2;
 }
 
 button {
@@ -325,13 +378,13 @@ h1 {
   margin-block-start: 0;
   margin-block-end: 0;
   font-style: normal;
-  font-weight: 1000;
+  font-weight: bold;
 }
 
 h2 {
   font-size: @TextL;
   font-style: normal;
-  font-weight: 700;
+  font-weight: bold;
   line-height: 20px;
 }
 
@@ -516,6 +569,17 @@ a {
   animation: ui-loader 0.75s linear infinite;
 }
 
+.loader {
+  position: fixed;
+  top: calc(50% - 19px);
+  left: calc(50% - 19px);
+  width: 32px !important;
+  height: 32px !important;
+  border: 3px solid transparent !important;
+  border-top: 3px solid #000 !important;
+  z-index: 0;
+}
+
 /* Safari */
 @-webkit-keyframes ui-loader {
   0% {
@@ -553,7 +617,7 @@ a {
   flex-direction: column;
   border-radius: 16px;
   border: 2px solid @Outline;
-  box-shadow: @Shadow;
+  box-shadow: 0 0 0 0;
   overflow: auto;
   z-index: 2;
   button {
@@ -594,6 +658,7 @@ a {
   visibility: hidden;
   opacity: 0;
   transform: scale(0.9);
+  filter: blur(2px);
   transition: @MotionOut;
 }
 
@@ -603,6 +668,8 @@ a {
   visibility: visible;
   opacity: 1;
   transform: scale(1);
+  filter: blur(0px);
+  box-shadow: @Shadow;
   transition: @MotionAlt;
 }
 

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tóm tắt</title>
     <script src="js/fx.js"></script>
-    <script src="js/func.js"></script>
     <link rel="stylesheet/less" type="text/css" href="style.less" />
     <script src="js/less.min.js"></script>
     <script src="js/jquery-3.7.1.min.js"></script>
@@ -19,15 +18,19 @@
 
     <nav>
       <img id="icon" src="assets/icon.svg" width="24px">
-      <div class="lay-g-d">
-        <button class="is-open"><span><img src="assets/icons/home.svg"><label>Tóm tắt</label></span></button>
-        <button><span><img src="assets/icons/notebook.svg"><label>Ghi chép</label></span></button>
-        <button><span><img src="assets/icons/list.svg"><label>Xếp hạng</label></span></button>
-        <button><span><img src="assets/icons/ann.svg"><label>Thông báo</label></span></button>
+      <div id="ui-nav" class="lay-g-d">
+        <button id="defaultOpen" onclick="goToPage(this, 'page-tomtat')" tabindex="1" class="is-open"><span><img src="assets/icons/apps.svg"><label>Tóm tắt</label></span></button>
+        <button onclick="goToPage(this, 'page-ghichep')" tabindex="2"><span><img src="assets/icons/book.svg"><label>Ghi chép</label></span></button>
+        <button onclick="goToPage(this, 'page-xephang')" tabindex="3"><span><img src="assets/icons/list.svg"><label>Xếp hạng</label></span></button>
+        <button onclick="goToPage(this, 'page-thongbao')" tabindex="4"><span><img src="assets/icons/announcement.svg"><label>Thông báo</label></span></button>
       </div>
       <div class="dropdown-wrapper">
-        <button onclick="dropdown('ui-more-dropdown')" id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
-        <div class="dropdown-content right up" id="ui-more-dropdown">
+        <button onclick="dropdown('ui-dropdown-more')" id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
+        <div class="dropdown-content right up" id="ui-dropdown-more">
+          <button>
+            <img src="assets/icons/question.svg">
+            Hướng dẫn
+          </button>
           <button>
             <img src="assets/icons/setting.svg">
             Cài đặt
@@ -41,75 +44,74 @@
     </nav>
 
     <div class="main-content">
-      <header>
-        <h1>Tóm tắt</h1>
-        <div class="lay-g-h">
-          <button class="small"><img src="assets/icons/ques.svg"></button>
-          <div class="dropdown-wrapper">
-            <button onclick="dropdown('ui-more-dropdown-moblie')" id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
-            <div class="dropdown-content left" id="ui-more-dropdown-moblie">
-              <button>
-                <img src="assets/icons/setting.svg">
-                Cài đặt
-              </button>
-              <button>
-                <img src="assets/icons/user.svg">
-                Tài khoản yuh yuh be oi
-              </button>
+
+      <main id="page-tomtat">
+        <header>
+          <h1>Tóm tắt</h1>
+          <div class="lay-g-h">
+            <button class="small"><img src="assets/icons/question.svg"></button>
+            <div class="dropdown-wrapper">
+              <button onclick="dropdown('ui-dropdown-more-moblie')" id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
+              <div class="dropdown-content left" id="ui-dropdown-more-moblie">
+                <button>
+                  <img src="assets/icons/setting.svg">
+                  Cài đặt
+                </button>
+                <button>
+                  <img src="assets/icons/user.svg">
+                  Tài khoản blabla balbabal
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </header>
-      <!--
-        <span id="loader" class="loader"></span>
-      -->
-
-      <main>
-
-        <div id="panel-wrapper">
-          <div class="panel" id="ui-panel-loi">
+        </header>
+  
+        <div class="lay-grid-h" id="panel-wrapper">
+          <div class="panel alt" id="ui-panel-loi">
             <div class="lay-g-h" style="padding: 8px">
               <label style="margin: 0;">Lỗi</label>
               <span id="data-lop-loi-tong">3</span>
             </div>
             <ul>
-              <li>Nhỏ này mặc không đúng trang phục</li>
-              <li>Nhỏ này đi dép lê</li>
+              <li>Bạn này mặc áo linh tinh</li>
+              <li>Bạn này đi dép lê</li>
+              <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, magni? Odio similique nostrum ab cupiditate ad beatae, voluptate cumque facere veritatis, maiores, consequuntur ducimus fugiat distinctio quos ut magni ipsa.</li>
               <li>...</li>
             </ul>
           </div>
-          <div class="panel">
-            <div class="lay-g-h" style="padding: 8px">
-              <label style="margin: 0;">Lỗi</label>
-              <span id="data-lop-loi-tong">3</span>
+          <button class="panel">
+            <div class="lay-g-h-f-alt">
+              <label style="margin: 0;">Điểm</label>
+              <span id="data-truong-tuan">Tuần 7</span>
             </div>
-            <ul>
-              <li>Nhỏ này mặc không đúng trang phục</li>
-              <li>Nhỏ này đi dép lê</li>
-              <li>...</li>
-            </ul>
-          </div>
+            <h1 id="data-lop-diem">705,47</h1>
+            <span id="data-lop-diem-cl" style="font-weight: bold;">+45,94 điểm</span>
+          </button>
+          <button class="panel">
+            <label style="margin: 0;">Chú ý</label>
+            <h1 id="data-lop-diem" style="padding-bottom: 4px;">Bạn này</h1>
+          </button>
         </div>
   
         <div class="lay-g-v">
           <h2>Quản lý</h2>
-
+  
           <div class="lay-grid-h">
             <button class="big">
-              <img src="assets/icons/ques.svg">
+              <img src="assets/icons/notice.svg">
               Lỗi vi phạm
             </button>
             <button class="big">
-              <img src="assets/icons/ques.svg">
+              <img src="assets/icons/para.svg">
               Sổ đầu bài
             </button>
           </div>
         </div>
-
+  
         <ul id="ui-data">
           <li>Dữ liệu</li>
         </ul>
-
+  
         <div class="lay-g-v">
           <input id="inputODay">
           <div class="lay-g-h">
@@ -119,7 +121,7 @@
         </div>
         
         <button id="dangxuat">Đăng xuất</button>
-
+  
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
@@ -127,13 +129,100 @@
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
   
       </main>
+  
+      <main id="page-ghichep">
+        <header>
+          <h1>Ghi chép</h1>
+          <div class="lay-g-h">
+            <div class="dropdown-wrapper">
+              <button onclick="dropdown('ui-more-dropdown-moblie')" id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
+              <div class="dropdown-content left" id="ui-more-dropdown-moblie">
+                <button>
+                  <img src="assets/icons/rotate-right.svg">
+                  Làm mới
+                </button>
+                <button>
+                  <img src="assets/icons/upload.svg">
+                  Nhập/xuất dữ liệu
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+  
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+      </main>
+
+      <main id="page-xephang">
+        <header>
+          <h1>Xếp hạng</h1>
+          <div class="lay-g-h">
+            <div class="dropdown-wrapper">
+              <button onclick="dropdown('ui-more-dropdown-moblie')" id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
+              <div class="dropdown-content left" id="ui-more-dropdown-moblie">
+                <button>
+                  <img src="assets/icons/rotate-right.svg">
+                  Làm mới
+                </button>
+                <button>
+                  <img src="assets/icons/upload.svg">
+                  Nhập/xuất dữ liệu
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+  
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+      </main>
+
+      <main id="page-thongbao">
+        <header>
+          <h1>Thông báo</h1>
+          <div class="lay-g-h">
+            <div class="dropdown-wrapper">
+              <button onclick="dropdown('ui-more-dropdown-moblie')" id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
+              <div class="dropdown-content left" id="ui-more-dropdown-moblie">
+                <button>
+                  <img src="assets/icons/rotate-right.svg">
+                  Làm mới
+                </button>
+                <button>
+                  <img src="assets/icons/upload.svg">
+                  Nhập/xuất dữ liệu
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+  
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+      </main>
+
     </div>
 
   </body>
+
+  <script src="js/func.js"></script>
+
+
   <!--
     <script type="module" src="js/main.js"></script>
 
   -->
+
 
 
 </html>

@@ -21,11 +21,10 @@
     <nav>
       <img id="icon" src="assets/icon.svg" width="24px">
       <div class="lay-g-d">
-        <button class="is-open"><span><img src="assets/icons/home.svg"><label>Tóm tắt</label></span></button>
-        <button><span><img src="assets/icons/notebook.svg"><label>Ghi chép</label></span></button>
-        <button><span><img src="assets/icons/list.svg"><label>Xếp hạng</label></span></button>
-        <button><span><img src="assets/icons/ann.svg"><label>Thông báo</label></span></button>
-      </div>
+        <button id="defaultOpen" onclick="goToPage(this, 'page-tomtat')" tabindex="1" class="is-open"><span><img src="assets/icons/apps.svg"><label>Tóm tắt</label></span></button>
+        <button onclick="goToPage(this, 'page-ghichep')" tabindex="2"><span><img src="assets/icons/book.svg"><label>Ghi chép</label></span></button>
+        <button onclick="goToPage(this, 'page-xephang')" tabindex="3"><span><img src="assets/icons/list.svg"><label>Xếp hạng</label></span></button>
+        <button onclick="goToPage(this, 'page-thongbao')" tabindex="4"><span><img src="assets/icons/announcement.svg"><label>Thông báo</label></span></button>
       <div class="dropdown-wrapper">
         <button onclick="dropdown('ui-more-dropdown')" id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
         <div class="dropdown-content right up" id="ui-more-dropdown">
@@ -41,7 +40,9 @@
       </div>
     </nav>
 
-<div class="main-content">
+  <div class="main-content">
+  
+    <main>  
       <header>
         <h1>Tóm tắt</h1>
         <div class="lay-g-h">
@@ -61,11 +62,9 @@
           </div>
         </div>
       </header>
-
-      <main>  
   
-      </main>
-    </div>
+    </main>
+  </div>
   </body>
   <script src="js/main.js"></script>
 </html>

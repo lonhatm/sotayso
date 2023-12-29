@@ -5,6 +5,8 @@ window.transitionToPage = function(href) {
     }, 250)
 }
 
+
+
 // document.addEventListener('DOMContentLoaded', function(event) {
 //     document.querySelector('body').style.opacity = 1
 // })

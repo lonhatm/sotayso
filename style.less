@@ -227,8 +227,10 @@ nav {
         visibility: hidden;
         width: 0px;
         opacity: 0;
-        text-wrap: nowrap;
+        tex-wrap: nowrap;
         overflow: hidden;
+        text-overflow: clip;
+        white-space: normal; 
         text-align: left;
         margin-left: 0px;
         transition: @MotionAlt;
@@ -658,7 +660,6 @@ a {
   visibility: hidden;
   opacity: 0;
   transform: scale(0.9);
-  filter: blur(2px);
   transition: @MotionOut;
 }
 
@@ -668,7 +669,6 @@ a {
   visibility: visible;
   opacity: 1;
   transform: scale(1);
-  filter: blur(0px);
   box-shadow: @Shadow;
   transition: @MotionAlt;
 }

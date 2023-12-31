@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tóm tắt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="manifest" href="/manifest.json">
+    <title>Sổ tay số</title>
     <script src="js/fx.js"></script>
     <link rel="stylesheet/less" type="text/css" href="style.less" />
     <script src="js/less.min.js"></script>
@@ -14,7 +15,45 @@
   <body>
     <div id="transition"></div>
 
-    <div id="overlay"></div>
+    <div id="overlay">
+      <div class="overlay" id="ui-overlay-setting">
+        <header>
+          <h1>Cài đặt</h1>
+          <button onclick="openOverlay('ui-overlay-setting')" class="small"><img src="assets/icons/close.svg"></button>
+        </header>
+        <div class="overlay-content">
+          <h2>Giao diện</h2>
+          <div class="lay-g-h-f-alt">
+            <label for="ui-color">Màu</label>
+            <select name="ui-color" id="ui-color">
+              <option value="auto">Tự động</option>
+              <option value="light">Sáng</option>
+              <option value="dark">Tối</option>
+            </select>
+          </div>
+          <div class="lay-g-h-f-alt">
+            <label for="ui-color">Màu</label>
+            <select name="ui-color" id="ui-color">
+              <option value="auto">Tự động</option>
+              <option value="light">Sáng</option>
+              <option value="dark">Tối</option>
+            </select>
+          </div>
+          <button id="dangxuat">Đăng xuất</button>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, non dolorum dolores delectus maxime dolor enim magni ea, temporibus nam cumque fuga assumenda suscipit rem vero repellat corporis tenetur voluptatem.</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, non dolorum dolores delectus maxime dolor enim magni ea, temporibus nam cumque fuga assumenda suscipit rem vero repellat corporis tenetur voluptatem.</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, non dolorum dolores delectus maxime dolor enim magni ea, temporibus nam cumque fuga assumenda suscipit rem vero repellat corporis tenetur voluptatem.</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, non dolorum dolores delectus maxime dolor enim magni ea, temporibus nam cumque fuga assumenda suscipit rem vero repellat corporis tenetur voluptatem.</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, non dolorum dolores delectus maxime dolor enim magni ea, temporibus nam cumque fuga assumenda suscipit rem vero repellat corporis tenetur voluptatem.</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, non dolorum dolores delectus maxime dolor enim magni ea, temporibus nam cumque fuga assumenda suscipit rem vero repellat corporis tenetur voluptatem.</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, non dolorum dolores delectus maxime dolor enim magni ea, temporibus nam cumque fuga assumenda suscipit rem vero repellat corporis tenetur voluptatem.</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, non dolorum dolores delectus maxime dolor enim magni ea, temporibus nam cumque fuga assumenda suscipit rem vero repellat corporis tenetur voluptatem.</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, non dolorum dolores delectus maxime dolor enim magni ea, temporibus nam cumque fuga assumenda suscipit rem vero repellat corporis tenetur voluptatem.</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, non dolorum dolores delectus maxime dolor enim magni ea, temporibus nam cumque fuga assumenda suscipit rem vero repellat corporis tenetur voluptatem.</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, non dolorum dolores delectus maxime dolor enim magni ea, temporibus nam cumque fuga assumenda suscipit rem vero repellat corporis tenetur voluptatem.</p>
+        </div>
+      </div>
+    </div>
 
     <nav>
       <img id="icon" src="assets/icon.svg" width="24px">
@@ -26,12 +65,12 @@
       </div>
       <div class="dropdown-wrapper">
         <button onclick="dropdown('ui-dropdown-more')" id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
-        <div class="dropdown-content right up" id="ui-dropdown-more">
+        <div class="dropdown-content right up prefix" id="ui-dropdown-more">
           <button>
             <img src="assets/icons/question.svg">
             Hướng dẫn
           </button>
-          <button>
+          <button onclick="openOverlay('ui-overlay-setting')">
             <img src="assets/icons/setting.svg">
             Cài đặt
           </button>
@@ -53,7 +92,7 @@
             <div class="dropdown-wrapper">
               <button onclick="dropdown('ui-dropdown-more-moblie')" id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
               <div class="dropdown-content left" id="ui-dropdown-more-moblie">
-                <button>
+                <button onclick="openOverlay('ui-overlay-setting')">
                   <img src="assets/icons/setting.svg">
                   Cài đặt
                 </button>
@@ -89,7 +128,11 @@
           </button>
           <button class="panel">
             <label style="margin: 0;">Chú ý</label>
-            <h1 id="data-lop-diem" style="padding-bottom: 4px;">Bạn này</h1>
+            <h2 id="data-lop-diem" style="padding-bottom: 4px;">Bạn này Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto optio aut, ex adipisci deserunt impedit corrupti suscipit exercitationem numquam rem. Deleniti minus cum velit corrupti officiis odio praesentium similique nobis.</h2>
+          </button>
+          <button class="panel">
+            <label style="margin: 0;">Chú ý</label>
+            <h2 id="data-lop-diem" style="padding-bottom: 4px;">Bạn này</h2>
           </button>
         </div>
   
@@ -120,13 +163,13 @@
           </div>
         </div>
         
-        <button id="dangxuat">Đăng xuất</button>
-  
+        
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        
   
       </main>
   

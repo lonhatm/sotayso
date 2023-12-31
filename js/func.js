@@ -1,5 +1,15 @@
-// chuyển trang
-window.goToPage = function (button, page) {
+// mở overlay -------------------------------
+
+function openOverlay(overlay) {
+  console.log(document.getElementById(overlay))
+  document.getElementById(overlay).classList.toggle("open-overlay")
+  document.getElementById("overlay").classList.toggle("open-overlay")
+}
+
+
+// chuyển trang ------------------------------------
+
+window.goToPage = function(button, page) {
   // nút chuyển trang
   var tab = document.querySelector("#ui-nav").querySelectorAll("button");
   for (const button of tab) {

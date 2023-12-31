@@ -2,6 +2,21 @@
   font-family: Recursive;
   src: url(assets/font/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf);
 }
+@font-face {
+  font-family: Recursive;
+  font-weight: normal;
+  src: url(assets/font/Recursive-Regular.ttf);
+}
+@font-face {
+  font-family: Recursive;
+  font-weight: bold;
+  src: url(assets/font/Recursive-Bold.ttf);
+}
+@font-face {
+  font-family: Recursive;
+  font-weight: 1000;
+  src: url(assets/font/Recursive-Black.ttf);
+}
 
 // assets/font/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf
 
@@ -14,8 +29,10 @@
 @Motion: 0.3s cubic-bezier(0.25, 0.75, 0.5, 1);
 @MotionAlt: 0.75s cubic-bezier(0.125, 1, 0.125, 1);
 @MotionPressed: 0.3s cubic-bezier(0.125, 1, 0.125, 1);
-@MotionOut: 0.25s cubic-bezier(0.25, 0, 0, 1);
+@MotionOut: 0.1s cubic-bezier(.25,0,.75,.25);
+@MotionBounce: 0.5s cubic-bezier(.3,1.5,.45,1);
 @Shadow: 0px 8px 24px -8px rgba(0, 0, 0, 0.25);
+@ShadowAlt: 0px -8px 16px -8px rgba(0, 0, 0, 0.25);
 
 @AFocus: #00f;
 @APressed: #f0f;
@@ -32,9 +49,13 @@ html {font-size: 15px;}
 @Text: 1rem;
 @TextS: 0.8rem;
 
-@Font: sans-serif, serif;
+@Font: Recursive, sans-serif, serif;
 
-@MediaMoblie: 640px;
+//Recursive
+
+@MediaMobile: 500px;
+@MediaHeight: 400px;
+@MediaHeightAlt: 600px;
 
 *,
 *::before,
@@ -55,6 +76,8 @@ html {font-size: 15px;}
   user-select: none;
   text-rendering: optimizeSpeed;
   touch-action: manipulation;
+  //font-smooth: never;
+  //-webkit-font-smoothing : none;
 }
 
 //html {
@@ -81,7 +104,7 @@ video {
 #wrapper {
   width: 100%;
   height: 100vh;
-  @media only screen and (max-width: @MediaMoblie) {
+  @media only screen and (max-width: @MediaMobile) {
     height: calc(100vh - 80px);
   }
   display: flex;
@@ -92,7 +115,7 @@ video {
 
 body {
   display: flex;
-  @media only screen and (max-width: @MediaMoblie) {
+  @media only screen and (max-width: @MediaMobile) {
     flex-direction: column;
   }
   flex-direction: row;
@@ -105,7 +128,7 @@ body {
 //  width: 100%;
 //  height: 100dvh;
 //  overflow: hidden;
-//  //@media only screen and (max-width: @MediaMoblie) {
+//  //@media only screen and (max-width: @MediaMobile) {
 //  //  padding: 0;
 //  //}
 //  //padding: 0;
@@ -117,10 +140,13 @@ body {
   width: 100%;
   height: 100dvh;
   overflow: hidden;
-  //@media only screen and (max-width: @MediaMoblie) {
-  //  padding: 0;
-  //}
-  //padding: 0;
+  @media only screen and (max-width: @MediaMobile) {
+    padding: 0 0 0 0 !important;
+  }
+  @media only screen and (max-width: 800px) {
+    padding: 0 0 0 124px;
+  }
+  padding: 0 16% 0 calc(124px + 16%);
 }
 
 main {
@@ -128,8 +154,9 @@ main {
   width: 100%;
   height: 100vh;
   margin: 0 0;
-  @media only screen and (max-width: @MediaMoblie) {
+  @media only screen and (max-width: @MediaMobile) {
     width: 100vw;
+    padding: 0 20px 100px;
   }
   padding: 0 20px 20px;
   display: none;
@@ -141,8 +168,8 @@ main {
 }
 
 nav {
-  //position: fixed;
-  @media only screen and (max-width: @MediaMoblie) {
+  position: fixed;
+  @media only screen and (max-width: @MediaMobile) {
     position: fixed;
     width: 100vw;
     min-width: none;
@@ -164,9 +191,24 @@ nav {
     //overflow-x: auto;
   }
   
-  padding: 26px 32px;
-  //min-width: 90px;
-  //max-width: 132px;
+  @media only screen and (max-height: @MediaHeight) and (max-width: @MediaMobile){
+    display: none;
+    background: red;
+  }
+
+  @media only screen and (max-height: @MediaHeight){
+    padding: 8px 32px 16px;
+    #icon {
+      display: none;
+    }
+  }
+
+  .lay-g-d {
+    width: 100%;
+  }
+  
+  padding: 26px 0;
+  width: 124px;
   height: 100dvh;
   display: flex;
   align-items: center;
@@ -240,7 +282,7 @@ header {
   width: calc(100% + 40px);
   margin: 0 -20px;
   padding: 0 20px;
-  min-height: 82px;
+  min-height: 80px;
   justify-content: space-between;
   align-items: center;
   position: sticky;
@@ -248,8 +290,10 @@ header {
   background: @Background;
   z-index: 2;
   margin-bottom: -48px;
-  @media only screen and (max-height: 400px) {
+  @media only screen and (max-height: @MediaHeight) {
     position: relative;
+    min-height: 60px;
+    margin-bottom: -38px;
   }
 }
 
@@ -386,6 +430,66 @@ input {
   transition: @Motion;
 }
 
+select {
+  appearance: none;
+  display: flex;
+  padding: 0 16px;
+  z-index: 1;
+  width: 160px;
+  height: 42px;
+  min-height: 42px;
+  background: @Background;
+  //align-items: left;
+  //justify-content: flex-start;
+  gap: 20px;
+  border-radius: 21px;
+  box-shadow: 0 0 0 2px @PrimaryLight inset;
+  border: 0;
+  &:hover {
+    box-shadow: 0 0 0 3px @PrimaryLight inset;
+  }
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 3px @Primary inset;
+  }
+
+  // mũi tên
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%);
+  background-position:
+    calc(100% - 19.9px) 19px,
+    calc(100% - 15.1px) 19px,
+    calc(100% - .5em) .5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1.5em 1.5em;
+  background-repeat: no-repeat;
+
+  &:focus {
+    background-image:
+      linear-gradient(45deg, gray 50%, transparent 50%),
+      linear-gradient(135deg, transparent 50%, gray 50%);
+    background-position:
+      calc(100% - 15.1px) 19px,
+      calc(100% - 19.9px) 19px,
+      calc(100% - .5em) .5em;
+    background-size:
+      5px 5px,
+      5px 5px,
+      1.5em 1.5em;
+    background-repeat: no-repeat;
+  }
+
+  transition: box-shadow @MotionAlt;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
 form {
   width: 100%;
 }
@@ -394,8 +498,7 @@ h1 {
   font-size: @TextXL;
   margin-block-start: 0;
   margin-block-end: 0;
-  font-style: normal;
-  font-weight: bold;
+  font-weight: 1000;
 }
 
 h2 {
@@ -437,9 +540,11 @@ a {
 .panel {
   display: flex;
   min-width: 100px; //152px
-  height: fit-content;
+  min-height: 82px;
+  max-height: 160px;
   padding: 16px;
   flex-direction: column;
+  justify-content: flex-start;
   //gap: 16px;
   border-radius: 16px;
   background: @Surface;
@@ -448,6 +553,14 @@ a {
     margin-block-start: -0.3em;
     margin-block-end: -0.2em;
   }
+  h2 {
+    margin-block-start: -0.3em;
+    margin-block-end: -0.2em;
+    width: 100%;
+    //white-space: nowrap;
+    overflow-y: auto;
+    //text-overflow: ellipsis;
+  }
 
   &.alt {
     padding: 8px;
@@ -455,6 +568,10 @@ a {
       list-style-type: none;
       margin: 0;
       padding: 0;
+      overflow-y: scroll;
+      border-radius: 8px;
+      width: 100%;
+      height: 100%;
     }
     li {
       border-radius: 8px;
@@ -472,6 +589,97 @@ a {
       opacity: 0.5;
       margin-bottom: 0;
     }
+  }
+}
+
+#overlay {
+  visibility: hidden;
+  opacity: 0;
+  display: flex; //flex
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  max-width: 100vw;
+  min-width: 100vw;
+  max-height: 100vh;
+  min-height: 100vh;
+  z-index: 10;
+  background: #00000040;
+  @media only screen and (max-width: @MediaMobile) {
+    display: block; //block
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  &.open-overlay {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: unset;
+  }
+  transition: @MotionAlt;
+  pointer-events: none;
+}
+
+
+
+.overlay {
+  &.open-overlay {
+    visibility: visible;
+    opacity: 1;
+    scale: 1;
+    transition: @MotionAlt;
+  }
+  @media only screen and (max-width: @MediaMobile) {
+    //margin-top: 128px;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100vh;
+    max-height: unset;
+    box-shadow: @ShadowAlt;
+    border-radius: 0;
+  }
+  @media only screen and (max-height: @MediaHeightAlt) {
+    height: 100vh;
+    max-height: unset;
+    border-radius: 0;
+  }
+  visibility: hidden;
+  opacity: 0;
+  scale: 1.1;
+  transition: @MotionOut;
+  display: flex;
+  flex-direction: column;
+  box-shadow: @Shadow;
+  background: @Background;
+  width: 480px;
+  height: 90vh;
+  max-height: 640px;
+  border-radius: 16px;
+  overflow: hidden;
+  header {
+    position: sticky;
+    padding: 0 20px;
+    margin: 0;
+    width: 100%;
+    @media only screen and (max-height: @MediaHeight) {
+      margin-bottom: 8px;
+    }
+  };
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 20px 20px;
+  width: 100%;
+  height: 100%;
+  background: @Background;
+  overflow-y: scroll;
+  @media only screen and (max-width: @MediaMobile) {
+  }
+  h2 {
+    margin-bottom: .5rem;
   }
 }
 
@@ -531,18 +739,24 @@ a {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-rows: auto;
   gap: 16px;
 }
 
 #panel-wrapper {
   width: 100%;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  @media only screen and (max-height: @MediaMobile) {
+    min-height: 240px;
+    max-height: 480px !important;
+    overflow-y: scroll;
+  }
 }
 
 .lay-g-d {
   // layout group dynamic (tức là tuỳ vào đang chế độ mobile hay desktop để chỉnh layout)
   display: flex;
-  @media only screen and (max-width: @MediaMoblie) {
+  @media only screen and (max-width: @MediaMobile) {
     width: 100%;
     flex-direction: row;
   }
@@ -655,7 +869,7 @@ a {
   background: @Background;
   min-width: 164px;
   width: fit-content;
-  padding: 10px;
+  padding: 6px;
   //display: flex;
   flex-direction: column;
   border-radius: 16px;
@@ -664,14 +878,14 @@ a {
   overflow: auto;
   z-index: 2;
   button {
-    padding: 10px;
+    padding: 10px 12px;
     height: fit-content;
     width: 100%;
     background: @Background;
     text-align: left;
     justify-content: flex-start;
     gap: 16px;
-    border-radius: 6px;
+    border-radius: 8px;
     line-height: normal;
     &:hover {
       background: darken(@Background, 8%);
@@ -697,11 +911,16 @@ a {
     right: 0;
     transform-origin: top right;
   }
+  &.prefix {
+    margin-left: 8px;
+  }
+
+  //box-shadow: @Shadow;
 
   visibility: hidden;
-  opacity: 0;
+  opacity: -1;
   transform: scale(0.75);
-  transition: @MotionOut;
+  transition: @MotionOut all;
 }
 
 .show-dropdown {
@@ -710,8 +929,7 @@ a {
   visibility: visible;
   opacity: 1;
   transform: scale(1);
-  box-shadow: @Shadow;
-  transition: @MotionAlt;
+  transition: @MotionAlt all;
 }
 
 .show-block {
@@ -744,7 +962,7 @@ a {
 
 nav {
   //position: fixed;
-  @media only screen and (max-width: @MediaMoblie) {
+  @media only screen and (max-width: @MediaMobile) {
     position: fixed;
     width: 100vw;
     min-width: none;
@@ -765,7 +983,7 @@ nav {
     }
     //overflow-x: auto;
   }
-  @media only screen and (min-width: @MediaMoblie) {
+  @media only screen and (min-width: @MediaMobile) {
     &:hover {
       align-items: flex-start;
       background: @Background;

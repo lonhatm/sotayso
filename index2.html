@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     
-    <link rel="manifest" href="/manifest.json">
+      <link rel="manifest" href="/manifest.json">
 
+    
     <title>Sổ tay số</title>
     <script src="js/fx.js"></script>
     <link rel="stylesheet/less" type="text/css" href="style.less" />
@@ -18,7 +19,6 @@
     <div id="transition"></div>
 
     <div id="overlay">
-
       <div class="overlay" id="ui-overlay-setting">
         <header>
           <h1>Cài đặt</h1>
@@ -56,25 +56,14 @@
           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, non dolorum dolores delectus maxime dolor enim magni ea, temporibus nam cumque fuga assumenda suscipit rem vero repellat corporis tenetur voluptatem.</p>
         </div>
       </div>
-
-      <div class="overlay" id="ui-overlay-user-qrcode">
-        <header>
-          <h1>Mã QR</h1>
-          <button onclick="openOverlay('ui-overlay-user-qrcode')" class="small"><img src="assets/icons/close.svg"></button>
-        </header>
-        <div class="overlay-content">
-          <img id="data-user-qrcode" src="assets/placeholder.png">
-          <h2 id="data-user-code">HS100223</h2>
-        </div>
-      </div>
-
     </div>
 
     <nav>
       <img id="icon" src="assets/icon.svg" width="24px">
       <div id="ui-nav" class="lay-g-d">
-        <button onclick="goToPage(this, 'page-tomtat')" tabindex="1" class="is-open"><span><img src="assets/icons/apps.svg"><label>Tóm tắt</label></span></button>
-        <button id="defaultOpen" onclick="goToPage(this, 'page-canhan')" tabindex="2"><span><img src="assets/icons/user.svg"><label>Cá nhân</label></span></button>
+        <button id="defaultOpen" onclick="goToPage(this, 'page-tomtat')" tabindex="1" class="is-open"><span><img src="assets/icons/apps.svg"><label>Tóm tắt</label></span></button>
+        <button onclick="goToPage(this, 'page-ghichep')" tabindex="2"><span><img src="assets/icons/book.svg"><label>Ghi chép</label></span></button>
+        <button onclick="goToPage(this, 'page-xephang')" tabindex="3"><span><img src="assets/icons/list.svg"><label>Xếp hạng</label></span></button>
         <button onclick="goToPage(this, 'page-thongbao')" tabindex="4"><span><img src="assets/icons/announcement.svg"><label>Thông báo</label></span></button>
       </div>
       <div class="dropdown-wrapper">
@@ -187,71 +176,31 @@
   
       </main>
   
-      <main id="page-canhan" style="gap: 20px;">
-        
-        <div class="lay-g-h"  style="position: sticky; top: 20px; width: fit-content; margin-left: auto; z-index: 1;">
-          <button class="small" onclick="openOverlay('ui-overlay-user-qrcode')">
-            <img src="assets/icons/qrcode.svg">
-          </button>
-          <button class="small">
-            <img src="assets/icons/more.svg">
-          </button>
-        </div>
-
-        <img style="margin: -42px 0 -16px; width: 156px; height: 156px; border-radius: 50%; object-fit: cover;" src="assets/placeholder.png">
-
-        <div style="margin-bottom: -20px; background: #fff; position: sticky; top: 0; padding: 22px 92px 22px 0;">
-          <h1 id="ui-user-name">Nguyễn Gì Đấy</h1>
-        </div>
-        <div class="lay-g-h" style="width: fit-content; margin-bottom: 16px;">
-          <p id="ui-user-role" class="subtitle">Giáo viên</p> 
-          <span class="subtitle">•</span>
-          <p id="ui-user-class" class="subtitle">10A2</p> 
-        </div>
-
-        
-
-        <div class="lay-grid-h">
-          <button class="big">
-            <img src="assets/icons/notice.svg">
-            Lỗi vi phạm
-          </button>
-          <button class="big">
-            <img src="assets/icons/para.svg">
-            Sổ đầu bài
-          </button>
-          <button class="big">
-            <img src="assets/icons/para.svg">
-            Sổ đầu bài
-          </button>
-          <button class="big">
-            <img src="assets/icons/para.svg">
-            Sổ đầu bài
-          </button>
-          <button class="big">
-            <img src="assets/icons/para.svg">
-            Sổ đầu bài
-          </button>
-          <button class="big">
-            <img src="assets/icons/para.svg">
-            Sổ đầu bài
-          </button>
-          <button class="big">
-            <img src="assets/icons/para.svg">
-            Sổ đầu bài
-          </button>
-          <button class="big">
-            <img src="assets/icons/para.svg">
-            Sổ đầu bài
-          </button>
-        </div>
-
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+      <main id="page-ghichep">
+        <header>
+          <h1>Ghi chép</h1>
+          <div class="lay-g-h">
+            <div class="dropdown-wrapper">
+              <button onclick="dropdown('ui-more-dropdown-moblie')" id="ui-more" class="small"><img src="assets/icons/more.svg"></button>
+              <div class="dropdown-content left" id="ui-more-dropdown-moblie">
+                <button>
+                  <img src="assets/icons/rotate-right.svg">
+                  Làm mới
+                </button>
+                <button>
+                  <img src="assets/icons/upload.svg">
+                  Nhập/xuất dữ liệu
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
   
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse deserunt ab animi? Esse corporis officiis soluta quas deleniti incidunt beatae blanditiis voluptates. Architecto laudantium soluta cum sunt odio ea quam!</p>
       </main>
 
       <main id="page-xephang">

@@ -53,6 +53,8 @@ if (vutDuLieuButton != null) {
   document.querySelector('#vutDuLieu').addEventListener('click', uploadData);
 }
 
+const consoleFake = document.getElementById("cons")
+
 async function uploadData() {
   try {
     const docRef = await addDoc(collection(db, "test"), {
@@ -60,6 +62,7 @@ async function uploadData() {
       time: DATE,
     });
     console.log("Document written with ID: ", docRef.id);
+    consoleFake.innerHTML = docRef.id
   } catch (e) {
     console.error("Error adding document: ", e);
   }

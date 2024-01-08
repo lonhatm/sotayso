@@ -3,13 +3,8 @@
   "name": "Sổ tay số",
   "icons": [
     {
-      "src": "assets/icon.svg",
-      "type": "image/svg+xml",
-      "sizes": "512x512"
-    },
-    {
       "src": "assets/icon512.png",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ],

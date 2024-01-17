@@ -21,10 +21,11 @@
 // assets/font/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf
 
 @Primary: #0055ff;
-@PrimaryLight: #0055ff3d;
-@Surface: #0055ff1a;
-@Background: #fff;
-@Outline: #00000014;
+@PrimaryLight: #C2D6FF;
+@Surface2: #D6E4FF;
+@Surface: #E5EEFF;
+@Background: #ffffff;
+@Outline: #80808080;
 @Disable: #a0a0a0;
 @Motion: 0.3s cubic-bezier(0.25, 0.75, 0.5, 1);
 @MotionAlt: 0.75s cubic-bezier(0.125, 1, 0.125, 1);
@@ -46,6 +47,7 @@ html {font-size: 15px;}
 
 @TextXL: 2rem;
 @TextL: 1.5rem;
+@TextX: 1.25rem;
 @Text: 1rem;
 @TextS: 0.8rem;
 
@@ -78,6 +80,7 @@ html {font-size: 15px;}
   touch-action: manipulation;
   //font-smooth: never;
   //-webkit-font-smoothing : none;
+  animation-delay: 0s;
 }
 
 //html {
@@ -91,6 +94,7 @@ body {
   font-style: normal;
   font-weight: normal;
   line-height: 20px;
+  background: @Background;
 }
 
 img,
@@ -156,11 +160,11 @@ main {
   margin: 0 0;
   @media only screen and (max-width: @MediaMobile) {
     width: 100vw;
-    padding: 0 20px 100px;
+    padding: 0 20px 128px;
   }
-  padding: 0 20px 20px;
+  padding: 0 20px 128px;
   display: none;
-  gap: 48px;
+  gap: 20px;
   flex-direction: column;
   justify-content: flex-start;
   overflow-y: scroll;
@@ -289,11 +293,10 @@ header {
   top: 0;
   background: @Background;
   z-index: 2;
-  margin-bottom: -48px;
+  margin-bottom: -20px;
   @media only screen and (max-height: @MediaHeight) {
     position: relative;
     min-height: 60px;
-    margin-bottom: -38px;
   }
 }
 
@@ -305,15 +308,17 @@ button {
   padding: 0px 16px;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 8px;
   border-radius: 24px;
   font-weight: bold;
   font-size: @Text;
   background: @PrimaryLight;
   cursor: pointer;
-
+  * {
+    cursor: pointer;
+  }
   &:hover {
-    background: darken((@PrimaryLight), 25);
+    background: darken((@PrimaryLight), 5);
   }
   &:active {
     transform: scale(0.975);
@@ -393,6 +398,33 @@ button {
     //transition: @Motion;
   }
 
+  &.float {
+    position: sticky;
+    z-index: 2;
+    top: calc(100dvh - 64px - 48px);
+    left: 100%;
+    margin-right: 20px;
+    margin-bottom: -88px;
+    border-radius: 20px;
+    box-shadow: @Shadow;
+    background: @PrimaryLight;
+    min-width: 64px;
+    width: fit-content;
+    min-height: 64px;
+    gap: 16px;
+    padding: 22px;
+    @media only screen and (max-width: @MediaMobile) {
+      label {
+        display: none;
+      }
+      top: calc(100vh - 64px - 48px - 80px);
+    }
+    @media only screen and (max-height: @MediaHeight) {
+      margin-bottom: -72px;
+      top: calc(100vh - 64px - 24px);
+    }
+  }
+
   img {
     width: 20px;
     height: 20px;
@@ -409,6 +441,30 @@ input {
   display: flex;
   padding: 0 16px;
   height: 52px;
+  min-height: 52px;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  align-self: stretch;
+  border-radius: 16px;
+  font-size: @Text;
+  box-shadow: 0 0 0 2px @PrimaryLight inset;
+  border: 0;
+  margin: 0 -4px 24px;
+  &:hover {
+    box-shadow: 0 0 0 3px @PrimaryLight inset;
+  }
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 3px @Primary inset;
+  }
+  transition: @Motion;
+}
+
+textarea {
+  display: flex;
+  padding: 0 16px;
   min-height: 52px;
   width: 100%;
   flex-direction: column;
@@ -510,6 +566,15 @@ h2 {
   line-height: 20px;
 }
 
+h3 {
+  font-size: @TextX;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 20px;
+}
+
 p {
   font-weight: normal;
   font-size: @Text;
@@ -547,6 +612,18 @@ a {
 //  grid-auto-columns: auto;
 //  //grid-auto-flow: dense;
 //}
+
+article {
+  display: flex;
+  padding: 20px 16px 16px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  align-self: stretch;
+  border-radius: 16px;
+  background: @Surface;
+}
 
 .panel {
   display: flex;
@@ -621,6 +698,7 @@ a {
     display: block; //block
     //overflow-y: scroll;
     overflow: hidden;
+    background: #00000000;
   }
   &.open-overlay {
     visibility: visible;
@@ -646,7 +724,7 @@ a {
     min-width: 100%;
     min-height: 100vh;
     max-height: unset;
-    box-shadow: @ShadowAlt;
+    // box-shadow: @ShadowAlt;
     border-radius: 0;
   }
   @media only screen and (max-height: @MediaHeightAlt) {
@@ -661,7 +739,7 @@ a {
   width: 480px;
   transition: @MotionOut;
   flex-direction: column;
-  box-shadow: @Shadow;
+  // box-shadow: @Shadow;
   background: @Background;
   height: 90vh;
   max-height: 640px;
@@ -694,6 +772,10 @@ a {
   }
 }
 
+.date-divider {
+  padding: 16px 8px 8px;
+}
+
 // cái này là kiểu mấy cái div
 // nhưng mà dùng flexbox để t làm
 // nó giống cái auto layout trong figma
@@ -724,6 +806,14 @@ a {
   align-items: flex-start;
   justify-content: center;
   gap: 24px;
+}
+.lay-g-v {
+  // layout group vertical alternative
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
 }
 
 .lay-g-h-f {
@@ -793,6 +883,19 @@ a {
   flex-direction: row;
 }
 
+// CUSTOM ATTRIBUTE
+
+[data-thongbao-uutien="0"] {
+  background: @Surface;
+}
+[data-thongbao-uutien="1"] {
+  background: @PrimaryLight;
+}
+[data-thongbao-uutien="2"] {
+  background: #FF8080;
+}
+
+
 // LINH TINH
 
 // chuyển động
@@ -824,10 +927,10 @@ a {
 @keyframes pageIn {
   0% {
     //transform-origin: top;
-    transform: scale(1.05);
-    opacity: 0;
+    //transform: scale(1.05);
+    transform: scale(1) translateY(16px);
+    opacity: 01;
   }
-
   100% {
     transform: scale(1);
     opacity: 1;
@@ -904,7 +1007,6 @@ a {
   flex-direction: column;
   border-radius: 16px;
   border: 2px solid @Outline;
-  box-shadow: 0 0 0 0;
   overflow: auto;
   z-index: 2;
   button {
@@ -986,6 +1088,24 @@ a {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: @PrimaryLight;
+}
+
+// nút reload khi ấn nó quay vòng vòng
+
+.reloadspin {
+  animation: reloadspin 1s cubic-bezier(0.25, 0.75, 0.5, 1) forwards;
+}
+
+@keyframes reloadspin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    border-radius: 21px;
+  }
+  100% {
+    transform: rotate(360deg*2);
+  }
 }
 
 /* nav nhưng mà có tính năng mở rộng khi di chuột lên

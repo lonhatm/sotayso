@@ -1,21 +1,26 @@
+//@font-face {
+//  font-family: Recursive;
+//  src: url(assets/font/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf);
+//}
 @font-face {
-  font-family: Recursive;
-  src: url(assets/font/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf);
-}
-@font-face {
-  font-family: Recursive;
+  font-family: Be Vietnam Pro;
   font-weight: normal;
-  src: url(assets/font/Recursive-Regular.ttf);
+  font-variant-alternates: styleset(ss01);
+  src: url(assets/font/BeVietnamPro-Regular.ttf);
 }
+
 @font-face {
-  font-family: Recursive;
+  font-family: Be Vietnam Pro;
   font-weight: bold;
-  src: url(assets/font/Recursive-Bold.ttf);
+  font-variant-alternates: styleset(ss01);
+  src: url(assets/font/BeVietnamPro-Bold.ttf);
 }
+
 @font-face {
-  font-family: Recursive;
+  font-family: Be Vietnam Pro;
   font-weight: 1000;
-  src: url(assets/font/Recursive-Black.ttf);
+  font-variant-alternates: ss01;
+  src: url(assets/font/BeVietnamPro-Black.ttf);
 }
 
 // assets/font/Recursive-VariableFont_CASL,CRSV,MONO,slnt,wght.ttf
@@ -26,21 +31,24 @@
 @Surface2: #D6E4FF;
 @Surface: #E5EEFF;
 @Background: #ffffff;
+@OverlayBackground: #00000040;
 @Outline: #80808040;
 @Disable: #a0a0a0;
 @Motion: 0.3s cubic-bezier(0.25, 0.75, 0.5, 1);
 @MotionAlt: 0.75s cubic-bezier(0.125, 1, 0.125, 1);
-@MotionAltMobile: 0.75s cubic-bezier(.05,1,.05,1);
+@MotionAltMobile: 0.75s cubic-bezier(.05, 1, .05, 1);
 @MotionPressed: 0.3s cubic-bezier(0.125, 1, 0.125, 1);
-@MotionOut: 0.1s cubic-bezier(.25,0,.75,.25);
-@MotionBounce: 0.5s cubic-bezier(.3,1.5,.45,1);
+@MotionOut: 0.1s cubic-bezier(.25, 0, .75, .25);
+@MotionBounce: 0.5s cubic-bezier(.3, 1.5, .45, 1);
 @Shadow: 0px 8px 24px -8px rgba(0, 0, 0, 0.25);
 @ShadowAlt: 0px -8px 16px -8px rgba(0, 0, 0, 0.25);
 
 @AFocus: #00f;
 @APressed: #f0f;
 
-html {font-size: 15px;}
+html {
+  font-size: 15px;
+}
 
 //@TextXL: 31px;
 //@TextL: 17px;
@@ -53,7 +61,7 @@ html {font-size: 15px;}
 @Text: 1rem;
 @TextS: 0.8rem;
 
-@Font: Recursive, sans-serif, serif;
+@Font: Be Vietnam Pro, sans-serif, serif;
 
 //Recursive
 
@@ -110,9 +118,11 @@ video {
 #wrapper {
   width: 100%;
   height: 100vh;
+
   @media only screen and (max-width: @MediaMobile) {
     height: calc(100vh - 80px);
   }
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -121,9 +131,11 @@ video {
 
 body {
   display: flex;
+
   @media only screen and (max-width: @MediaMobile) {
     flex-direction: column;
   }
+
   flex-direction: row;
   //overflow: hidden;
 }
@@ -146,12 +158,15 @@ body {
   width: 100%;
   height: 100dvh;
   overflow: hidden;
+
   @media only screen and (max-width: @MediaMobile) {
     padding: 0 0 0 0 !important;
   }
+
   @media only screen and (max-width: 800px) {
     padding: 0 0 0 124px;
   }
+
   padding: 0 16% 0 calc(124px + 16%);
 }
 
@@ -160,10 +175,12 @@ main {
   width: 100%;
   height: 100vh;
   margin: 0 0;
+
   @media only screen and (max-width: @MediaMobile) {
     width: 100vw;
     padding: 0 20px 128px;
   }
+
   padding: 0 20px 128px;
   display: none;
   gap: 20px;
@@ -175,6 +192,7 @@ main {
 
 nav {
   position: fixed;
+
   @media only screen and (max-width: @MediaMobile) {
     position: fixed;
     width: 100vw;
@@ -185,25 +203,29 @@ nav {
     align-items: center;
     flex-direction: row;
     bottom: 0;
+
     button {
       width: 100%;
       min-width: 60px;
       height: 80px !important;
     }
+
     #icon,
     #ui-more {
       display: none;
     }
+
     //overflow-x: auto;
   }
-  
-  @media only screen and (max-height: @MediaHeight) and (max-width: @MediaMobile){
+
+  @media only screen and (max-height: @MediaHeight) and (max-width: @MediaMobile) {
     display: none;
     background: red;
   }
 
-  @media only screen and (max-height: @MediaHeight){
+  @media only screen and (max-height: @MediaHeight) {
     padding: 8px 32px 16px;
+
     #icon {
       display: none;
     }
@@ -212,7 +234,7 @@ nav {
   .lay-g-d {
     width: 100%;
   }
-  
+
   padding: 26px 0;
   width: 124px;
   height: 100dvh;
@@ -222,38 +244,46 @@ nav {
   flex-direction: column;
   background: @Background;
   z-index: 2;
+
   #ui-more {
     border-radius: 24px;
     margin: 0 9px;
   }
+
   #icon {
     margin: 0 18px;
     min-width: 24px;
   }
+
   button {
     width: 100%;
     height: 48px;
     background: @Background;
     border-radius: 0;
     padding: 0;
+
     &:hover {
       background: @Background;
+
       span {
         padding: 0px 20px;
         background: darken((@Background), 8%);
       }
     }
+
     &.is-open {
       &:hover {
         span {
           background: darken((@PrimaryLight), 8%);
         }
       }
+
       span {
         padding: 0px 20px;
         background: @PrimaryLight;
       }
     }
+
     span {
       label {
         //display: none;
@@ -268,9 +298,11 @@ nav {
         transition: @MotionAlt;
         transition-delay: .25s;
       }
+
       img {
         min-width: 20px;
       }
+
       display: flex;
       height: 36px;
       padding: 0px 8px;
@@ -296,6 +328,7 @@ header {
   background: @Background;
   z-index: 2;
   margin-bottom: -20px;
+
   @media only screen and (max-height: @MediaHeight) {
     position: relative;
     min-height: 60px;
@@ -316,25 +349,31 @@ button {
   font-size: @Text;
   background: @PrimaryLight;
   cursor: pointer;
+
   * {
     cursor: pointer;
   }
+
   &:hover {
     background: darken((@PrimaryLight), 5);
   }
+
   &:active {
     transform: scale(0.975);
     transition: @MotionPressed;
   }
+
   &:disabled {
     background: @Disable;
     cursor: not-allowed;
   }
+
   &:focus-visible {
     outline: 4px solid @AFocus;
     border-radius: 8px;
     transition: 0s;
     z-index: 1;
+
     &:active {
       outline: 4px solid @APressed;
     }
@@ -347,6 +386,7 @@ button {
     padding: 0px;
     background: @Background;
     box-shadow: 0 0 0 8px @Background inset;
+
     &:hover {
       background: darken((@Background), 8%);
       box-shadow: 0 0 0 0px @Background inset;
@@ -358,6 +398,7 @@ button {
     margin: 0 -16px;
     background: @Background;
     box-shadow: 0 0 0 8px @Background inset;
+
     &:hover {
       background: darken((@Background), 8%);
       box-shadow: 0 0 0 0px @Background inset;
@@ -377,9 +418,11 @@ button {
     gap: 16px;
     border-radius: 16px;
     background: @Surface;
+
     &:hover {
       background: @PrimaryLight;
     }
+
     //transition: @Motion;
   }
 
@@ -394,9 +437,11 @@ button {
     border-radius: 16px;
     background: @Surface;
     font-weight: unset;
+
     &:hover {
       background: @PrimaryLight;
     }
+
     //transition: @Motion;
   }
 
@@ -415,12 +460,15 @@ button {
     min-height: 64px;
     gap: 16px;
     padding: 22px;
+
     @media only screen and (max-width: @MediaMobile) {
       label {
         display: none;
       }
+
       top: calc(100vh - 64px - 48px - 80px);
     }
+
     @media only screen and (max-height: @MediaHeight) {
       margin-bottom: -72px;
       top: calc(100vh - 64px - 24px);
@@ -454,13 +502,16 @@ input {
   box-shadow: 0 0 0 2px @PrimaryLight inset;
   border: 0;
   margin: 0 -4px 24px;
+
   &:hover {
     box-shadow: 0 0 0 3px @PrimaryLight inset;
   }
+
   &:focus {
     outline: 0;
     box-shadow: 0 0 0 3px @Primary inset;
   }
+
   transition: @Motion;
 }
 
@@ -479,21 +530,24 @@ textarea {
   box-shadow: 0 0 0 2px @PrimaryLight inset;
   border: 0;
   margin: 0 -4px 24px;
+
   &:hover {
     box-shadow: 0 0 0 3px @PrimaryLight inset;
   }
+
   &:focus {
     outline: 0;
     box-shadow: 0 0 0 3px @Primary inset;
   }
 
-  transition: @Motion, height 0s;
+  transition: @Motion,
+  height 0s;
   resize: vertical;
 
   &::-webkit-resizer {
     background-image: url("assets/other/rz.svg");
-    background-position: center; 
-    background-repeat: no-repeat; 
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
   }
 }
@@ -513,9 +567,11 @@ select {
   border-radius: 21px;
   box-shadow: 0 0 0 2px @PrimaryLight inset;
   border: 0;
+
   &:hover {
     box-shadow: 0 0 0 3px @PrimaryLight inset;
   }
+
   &:focus {
     outline: 0;
     box-shadow: 0 0 0 3px @Primary inset;
@@ -523,17 +579,14 @@ select {
 
   // mũi tên
 
-  background-image:
-    linear-gradient(45deg, transparent 50%, gray 50%),
-    linear-gradient(135deg, gray 50%, transparent 50%);
-  background-position:
-    calc(100% - 19.9px) 19px,
-    calc(100% - 15.1px) 19px,
-    calc(100% - .5em) .5em;
-  background-size:
-    5px 5px,
-    5px 5px,
-    1.5em 1.5em;
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%),
+  linear-gradient(135deg, gray 50%, transparent 50%);
+  background-position: calc(100% - 19.9px) 19px,
+  calc(100% - 15.1px) 19px,
+  calc(100% - .5em) .5em;
+  background-size: 5px 5px,
+  5px 5px,
+  1.5em 1.5em;
   background-repeat: no-repeat;
 
   &:focus {
@@ -560,7 +613,7 @@ select {
 
 #overlay {
   visibility: hidden;
-  opacity: 0;
+  //opacity: 0;
   display: flex; //flex
   position: fixed;
   align-items: center;
@@ -571,24 +624,29 @@ select {
   max-height: 100vh;
   min-height: 100vh;
   z-index: 10;
-  background: @Background;
+  background: transparent;
+
   @media only screen and (max-width: @MediaMobile) {
     display: block; //block
     //overflow-y: scroll;
     overflow: hidden;
-    transition: @MotionAlt, opacity .25s;
+    transition: @MotionAlt;
   }
+
   &.open-overlay {
     visibility: visible;
     opacity: 1;
     pointer-events: unset;
+    background: @OverlayBackground;
   }
+
   transition: @MotionAlt;
   pointer-events: none;
 }
 
 .overlay {
   position: absolute;
+
   &.open-overlay {
     position: unset;
     visibility: visible;
@@ -596,10 +654,12 @@ select {
     scale: 1;
     transform: translateX(0px);
     transition: @MotionAltMobile;
+    //filter: blur(0px);
     //@media only screen and (max-width: @MediaMobile) {
     //  transition: @MotionAltMobile;
     //}
   }
+
   @media only screen and (max-width: @MediaMobile) {
     //margin-top: 128px;
     max-width: 100%;
@@ -609,45 +669,56 @@ select {
     // box-shadow: @ShadowAlt;
     border-radius: 0;
     scale: 1;
-    transform: translateX(100vw);
+    transform: translateY(100vh);
+    opacity: 1;
   }
+
   @media only screen and (max-height: @MediaHeightAlt) {
     height: 100vh;
     max-height: unset;
     border-radius: 0;
   }
+
   visibility: hidden;
   display: flex;
   opacity: 0;
-  scale: 1.1;
+  scale: 0.8;
   //width: 480px;
   transition: @MotionOut;
   flex-direction: column;
-  // box-shadow: @Shadow;
+  box-shadow: @Shadow;
   background: @Background;
-  height: 100dvh;
-  //max-height: 640px;
-  //border-radius: 16px;
+  //filter: blur(32px);
+  //min-height: 640px;
+  height: 80dvh;
+  max-height: 720px;
+  border-radius: 24px;
   overflow: hidden;
+
   header {
     position: sticky;
     margin: 0 auto;
     width: 480px;
+
     @media only screen and (max-height: @MediaHeight) {
       width: 100%;
       padding: 0 20px;
       margin-bottom: 8px;
     }
+
     @media only screen and (max-width: @MediaMobile) {
       width: 100%;
       padding: 0 20px;
     }
+
     h1 {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
-  };
+  }
+
+  ;
 }
 
 .overlay-content {
@@ -659,10 +730,12 @@ select {
   height: 100%;
   background: @Background;
   overflow-y: scroll;
+
   @media only screen and (max-width: @MediaMobile) {
     padding: 0 20px 20px;
     width: 100%;
   }
+
   h2 {
     margin-bottom: .5rem;
   }
@@ -670,14 +743,19 @@ select {
 
 .content {
   padding: 20px;
-  margin: 0 -20px;
-  width: calc(100% + 40px);
   height: 100%;
   max-height: 100%;
   background: @Surface;
-  border-radius: 24px;
   gap: 20px;
   overflow-y: scroll;
+  @media only screen and (max-width: @MediaMobile) {
+    margin: 0 -20px;
+    width: calc(100% + 40px);
+    border-radius: 24px;
+  }
+  margin: 0;
+  width: 100%;
+  border-radius: 16px;
 }
 
 form {
@@ -789,6 +867,7 @@ article {
     margin-block-start: -0.3em;
     margin-block-end: -0.2em;
   }
+
   h2 {
     margin-block-start: -0.3em;
     margin-block-end: -0.2em;
@@ -800,6 +879,7 @@ article {
 
   &.alt {
     padding: 8px;
+
     ul {
       list-style-type: none;
       margin: 0;
@@ -809,6 +889,7 @@ article {
       width: 100%;
       height: 100%;
     }
+
     li {
       border-radius: 8px;
       padding: 10px 12px;
@@ -822,6 +903,7 @@ article {
       line-clamp: 2;
       -webkit-box-orient: vertical;
     }
+
     li:last-of-type {
       opacity: 0.5;
       margin-bottom: 0;
@@ -860,6 +942,7 @@ article {
   justify-content: center;
   gap: 24px;
 }
+
 .lay-g-v {
   // layout group vertical alternative
   display: flex;
@@ -924,31 +1007,37 @@ article {
   white-space: nowrap;
   overflow-x: scroll;
   min-height: 200px;
+
   .panel {
     scroll-snap-align: start;
     //display: inline-flex;
     margin-right: 12px;
   }
+
   border-radius: 16px;
 }
 
 .lay-g-d {
   // layout group dynamic (tức là tuỳ vào đang chế độ mobile hay desktop để chỉnh layout)
   display: flex;
+
   @media only screen and (max-width: @MediaMobile) {
     width: 100%;
     flex-direction: row;
   }
+
   flex-direction: column;
 }
 
 .lay-g-d-alt {
   // layout group dynamic alt (vẫn thế nhưng khác chiều)
   display: flex;
+
   @media only screen and (max-width: @MediaMobile) {
     width: 100%;
     flex-direction: column;
   }
+
   flex-direction: row;
 }
 
@@ -957,9 +1046,11 @@ article {
 [data-thongbao-uutien="0"] {
   background: @Surface;
 }
+
 [data-thongbao-uutien="1"] {
   background: @PrimaryLight;
 }
+
 [data-thongbao-uutien="2"] {
   background: #FF8080;
 }
@@ -1000,6 +1091,7 @@ article {
     transform: scale(1) translateY(16px);
     opacity: 01;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -1010,7 +1102,9 @@ article {
   to {
     transform: scale(0.9);
     opacity: 0;
-  } 100% {
+  }
+
+  100% {
     display: none;
   }
 }
@@ -1024,7 +1118,8 @@ article {
   width: 16px;
   height: 16px;
   margin: 4px;
-  -webkit-animation: ui-loader 0.75s linear infinite; /* Safari */
+  -webkit-animation: ui-loader 0.75s linear infinite;
+  /* Safari */
   animation: ui-loader 0.75s linear infinite;
 }
 
@@ -1044,6 +1139,7 @@ article {
   0% {
     -webkit-transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
   }
@@ -1053,6 +1149,7 @@ article {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -1078,6 +1175,7 @@ article {
   border: 2px solid @Outline;
   overflow: auto;
   z-index: 2;
+
   button {
     padding: 10px 12px;
     height: fit-content;
@@ -1088,30 +1186,37 @@ article {
     gap: 16px;
     border-radius: 8px;
     line-height: normal;
+
     &:hover {
       background: darken(@Background, 8%);
     }
   }
+
   &.up {
     bottom: 42px;
+
     &.right {
       left: 42px;
       bottom: 0;
       transform-origin: left bottom;
     }
+
     &.left {
       right: 42px;
       transform-origin: right bottom;
     }
   }
+
   &.right {
     left: 42px;
     transform-origin: left;
   }
+
   &.left {
     right: 0;
     transform-origin: top right;
   }
+
   &.prefix {
     margin-left: 8px;
   }
@@ -1169,9 +1274,11 @@ article {
   0% {
     transform: rotate(0deg);
   }
+
   50% {
     border-radius: 21px;
   }
+
   100% {
     transform: rotate(360deg*2);
   }
